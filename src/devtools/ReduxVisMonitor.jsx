@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { ActionCreators } from 'redux-devtools';
 import styled from 'styled-components'
 import ActionList from './ActionList'
+import LineGraph from './LineGraph'
+import mapValues from 'lodash/mapValues'
 
 const { reset, jumpToState } = ActionCreators;
 
@@ -48,13 +50,19 @@ export default class VisMonitor extends (PureComponent || Component) {
       currentStateIndex, computedStates, actionsById, stagedActionIds, hideResetButton
     } = this.props;
 
+    const todosLength = computedStates.map((state, index) => ({
+      stateId: index,
+      value: state.state.todos.length
+    }))
+
     return (
       <Panel>
         <h3>6.894 A4 Prototype</h3>
 
         <ActionList stagedActionIds={stagedActionIds} actionsById={actionsById} setHoveredStateId={this.setHoveredStateId} />
 
-        <hr />
+        {/* todo: could dynamically define the state -> value function? */}
+        <LineGraph values={todosLength} />
 
         <div>
           hovered state Id: {this.state.hoveredStateId}
