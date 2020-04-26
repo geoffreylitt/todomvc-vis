@@ -6,7 +6,10 @@ const spec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "description": "value over time",
   "data": {"name": "table"},
-  "mark": "line",
+  "mark": {
+    "type": "line",
+    "interpolate": "step"
+  },
   "encoding": {
     "x": {"field": "stateId", "type": "ordinal", "axis": null},
     "y": {"field": "value", "type": "quantitative", "axis": null}
@@ -15,11 +18,13 @@ const spec = {
   "height": 30
 }
 
+const signalListeners = { hover: (e) => { console.log(e) } };
+
 const LineGraph = ({ values }) => {
   const vegaData = { table: values || [] }
 
   return <div className="line-graph-container">
-    <VegaLite spec={spec} data={vegaData} />
+    <VegaLite spec={spec} data={vegaData} signalListeners={signalListeners} />
   </div>
 }
 
