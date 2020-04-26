@@ -16,8 +16,6 @@ const Action = styled.div`
   }
 `
 
-
-
 const ActionList = ({ stagedActionIds, actionsById, setHoveredStateId }) => {
   const actionDivs = stagedActionIds.map(actionId => {
     const action = actionsById[actionId];
