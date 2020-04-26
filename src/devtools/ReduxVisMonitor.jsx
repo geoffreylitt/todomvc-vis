@@ -1,8 +1,8 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import * as themes from 'redux-devtools-themes';
 import { ActionCreators } from 'redux-devtools';
 import styled from 'styled-components'
+import ActionList from './ActionList'
 
 const { reset, jumpToState } = ActionCreators;
 
@@ -31,7 +31,6 @@ export default class VisMonitor extends (PureComponent || Component) {
     preserveScrollTop: PropTypes.bool,
     stagedActions: PropTypes.array,
     select: PropTypes.func.isRequired,
-    hideResetButton: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -39,11 +38,10 @@ export default class VisMonitor extends (PureComponent || Component) {
   };
 
   state = {
-    timer: undefined,
-    replaySpeed: '1x'
+    hoveredStateId: this.props.currentStateIndex
   };
 
-
+  setHoveredStateId = (stateId) => this.setState({ hoveredStateId: stateId })
 
   render() {
     const {
@@ -53,6 +51,15 @@ export default class VisMonitor extends (PureComponent || Component) {
     return (
       <Panel>
         <h3>6.894 A4 Prototype</h3>
+
+        <ActionList stagedActionIds={stagedActionIds} actionsById={actionsById} setHoveredStateId={this.setHoveredStateId} />
+
+        <hr />
+
+        <div>
+          hovered state Id: {this.state.hoveredStateId}
+        </div>
+
         <div>
           current state index: {currentStateIndex}
         </div>
@@ -62,7 +69,7 @@ export default class VisMonitor extends (PureComponent || Component) {
         </div>
 
         <div>
-          actions by ID: {JSON.stringify(actionsById)}
+          staged Action Ids: {stagedActionIds}
         </div>
       </Panel>
     );
