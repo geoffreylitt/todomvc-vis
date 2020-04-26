@@ -22,7 +22,7 @@ Line.defaultProps = {
   strokeWidth:  2
 }
 
-const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId }) => {
+const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState }) => {
 
   const xScale = d3.scaleLinear()
                  .domain(d3.extent(data, d => d.stateId))
@@ -45,17 +45,24 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId })
 
   const bisect = d3.bisector(d => d.stateId).right;
 
-  const onMouseMove = (e) => {
+  const getStateIdFromMouseEvent = (e) => {
     const [xPos, yPos] = d3.clientPoint(e.target, e);
     const position = {
       x: xScale.invert(xPos),
       y: yScale.invert(yPos)
     };
-    const nearest = bisect(data, position.x, 1);
-    setSelectedStateId(nearest);
+    return bisect(data, position.x, 1);
   }
 
-  return <GraphContainer width={width} height={height} onMouseMove={onMouseMove}>
+  const onMouseMove = (e) => {
+    setSelectedStateId(getStateIdFromMouseEvent(e));
+  }
+
+  const onClick = (e) => {
+    jumpToState(getStateIdFromMouseEvent(e));
+  }
+
+  return <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
     <Line path={line(data)} />
     <Line path={selectionMarker} stroke='#ffcece' />
   </GraphContainer>

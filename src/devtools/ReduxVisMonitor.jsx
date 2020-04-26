@@ -48,7 +48,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
   render() {
     const {
-      currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds
+      currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds, dispatch
     } = this.props;
 
     const todosLength = computedStates.map((state, index) => ({
@@ -61,12 +61,27 @@ export default class VisMonitor extends (PureComponent || Component) {
         <h3>6.894 A4 Prototype</h3>
 
         <div>Actions:</div>
-        <ActionList currentStateId={currentStateIndex} stagedActionIds={stagedActionIds} skippedActionIds={skippedActionIds} actionsById={actionsById} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId} />
+        <ActionList
+          currentStateId={currentStateIndex}
+          stagedActionIds={stagedActionIds}
+          skippedActionIds={skippedActionIds}
+          actionsById={actionsById}
+          setSelectedStateId={this.setSelectedStateId}
+          selectedStateId={this.state.selectedStateId}
+          jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+          />
 
         <div>state.todos.length:</div>
 
         {/* todo: could dynamically define the state -> value function? */}
-        <LineGraph data={todosLength} width={150} height={30} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId}/>
+        <LineGraph
+          data={todosLength}
+          width={150}
+          height={30}
+          setSelectedStateId={this.setSelectedStateId}
+          selectedStateId={this.state.selectedStateId}
+          jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+          />
 
         <div>
           hovered state Id: {this.state.selectedStateId}
