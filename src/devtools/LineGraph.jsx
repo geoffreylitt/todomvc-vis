@@ -57,7 +57,7 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId })
 
   return <GraphContainer width={width} height={height} onMouseMove={onMouseMove}>
     <Line path={line(data)} />
-    <Line path={selectionMarker} stroke='#ddd' />
+    <Line path={selectionMarker} stroke='#ccc' />
   </GraphContainer>
 }
 
