@@ -71,18 +71,6 @@ export default class VisMonitor extends (PureComponent || Component) {
         <div>
           hovered state Id: {this.state.selectedStateId}
         </div>
-
-        <div>
-          current state index: {currentStateIndex}
-        </div>
-
-        <div>
-          computed states: {JSON.stringify(computedStates)}
-        </div>
-
-        <div>
-          staged Action Ids: {stagedActionIds}
-        </div>
       </Panel>
     );
   }
