@@ -48,7 +48,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
   render() {
     const {
-      currentStateIndex, computedStates, actionsById, stagedActionIds, hideResetButton
+      currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds
     } = this.props;
 
     const todosLength = computedStates.map((state, index) => ({
@@ -61,7 +61,7 @@ export default class VisMonitor extends (PureComponent || Component) {
         <h3>6.894 A4 Prototype</h3>
 
         <div>Actions:</div>
-        <ActionList stagedActionIds={stagedActionIds} actionsById={actionsById} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId} />
+        <ActionList currentStateId={currentStateIndex} stagedActionIds={stagedActionIds} skippedActionIds={skippedActionIds} actionsById={actionsById} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId} />
 
         <div>state.todos.length:</div>
 
@@ -70,6 +70,10 @@ export default class VisMonitor extends (PureComponent || Component) {
 
         <div>
           hovered state Id: {this.state.selectedStateId}
+        </div>
+
+        <div>
+          current state index: {currentStateIndex}
         </div>
       </Panel>
     );
