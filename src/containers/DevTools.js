@@ -7,6 +7,7 @@ import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 import SliderMonitor from 'redux-slider-monitor'
+import VisMonitor from '../devtools/ReduxVisMonitor'
 
 // createDevTools takes a monitor and produces a DevTools component
 const DevTools = createDevTools(
@@ -21,6 +22,7 @@ const DevTools = createDevTools(
     defaultIsVisible={true}
     defaultPosition="bottom"
   >
+    <VisMonitor />
     <LogMonitor theme="tomorrow" />
     <SliderMonitor keyboardEnabled />
   </DockMonitor>
