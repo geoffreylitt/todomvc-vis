@@ -4,24 +4,21 @@ import styled from 'styled-components'
 const Action = styled.div`
   display: inline-block;
   width: 80px;
-  background-color: #eee;
+  background-color: ${props => props.selected ? "#ccc" : "#eee"};
   overflow: hidden;
   text-overflow: ellipsis;
   margin-right: 10px;
   padding: 5px;
   border-radius: 5px;
-
-  &:hover {
-    background-color: #ddd;
-  }
 `
 
-const ActionList = ({ stagedActionIds, actionsById, setHoveredStateId }) => {
+const ActionList = ({ stagedActionIds, actionsById, selectedStateId, setSelectedStateId }) => {
   const actionDivs = stagedActionIds.map(actionId => {
     const action = actionsById[actionId];
     return <Action
       key={actionId}
-      onMouseOver={ () => setHoveredStateId(actionId) } >
+      onMouseOver={ () => setSelectedStateId(actionId) }
+      selected={actionId === selectedStateId} >
         { action.action.type }
       </Action>;
   })

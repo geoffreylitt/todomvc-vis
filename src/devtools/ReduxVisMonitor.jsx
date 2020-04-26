@@ -18,6 +18,7 @@ function reducer() {
   return {};
 }
 
+// Todo: switch to functional component
 export default class VisMonitor extends (PureComponent || Component) {
   static update = reducer;
 
@@ -40,10 +41,10 @@ export default class VisMonitor extends (PureComponent || Component) {
   };
 
   state = {
-    hoveredStateId: this.props.currentStateIndex
+    selectedStateId: this.props.currentStateIndex
   };
 
-  setHoveredStateId = (stateId) => this.setState({ hoveredStateId: stateId })
+  setSelectedStateId = (stateId) => this.setState({ selectedStateId: stateId })
 
   render() {
     const {
@@ -59,13 +60,16 @@ export default class VisMonitor extends (PureComponent || Component) {
       <Panel>
         <h3>6.894 A4 Prototype</h3>
 
-        <ActionList stagedActionIds={stagedActionIds} actionsById={actionsById} setHoveredStateId={this.setHoveredStateId} />
+        <div>Actions:</div>
+        <ActionList stagedActionIds={stagedActionIds} actionsById={actionsById} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId} />
+
+        <div>state.todos.length:</div>
 
         {/* todo: could dynamically define the state -> value function? */}
-        <LineGraph values={todosLength} />
+        <LineGraph data={todosLength} width={150} height={30} setSelectedStateId={this.setSelectedStateId} selectedStateId={this.state.selectedStateId}/>
 
         <div>
-          hovered state Id: {this.state.hoveredStateId}
+          hovered state Id: {this.state.selectedStateId}
         </div>
 
         <div>
