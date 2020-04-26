@@ -58,7 +58,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
     return (
       <Panel>
-        <h3>6.894 A4 Prototype</h3>
+        <h3>6.894 A4 Prototype, Geoffrey Litt</h3>
 
         <div>Actions:</div>
         <ActionList
