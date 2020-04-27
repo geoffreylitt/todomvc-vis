@@ -17,12 +17,15 @@ const Line = ({ path, stroke, fill, strokeWidth }) => {
 }
 
 Line.defaultProps = {
-  stroke:       '#a6d2ff',
+  stroke:       'blue',
   fill:         'none',
   strokeWidth:  2
 }
 
-const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState }) => {
+const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
+
+  const activeData = data.filter(d => d.stateId <= currentStateId)
+  const inactiveData = data.filter(d => d.stateId >= currentStateId)
 
   const xScale = d3.scaleLinear()
                  .domain(d3.extent(data, d => d.stateId))
@@ -63,7 +66,8 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
   }
 
   return <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
-    <Line path={line(data)} />
+    <Line path={line(activeData)} stroke='#a6d2ff' />
+    <Line path={line(inactiveData)} stroke="#eee" />
     <Line path={selectionMarker} stroke='#ffcece' />
   </GraphContainer>
 }

@@ -76,6 +76,7 @@ export default class VisMonitor extends (PureComponent || Component) {
         {/* todo: could dynamically define the state -> value function? */}
         <LineGraph
           data={todosLength}
+          currentStateId={currentStateIndex}
           width={150}
           height={30}
           setSelectedStateId={this.setSelectedStateId}
