@@ -11,7 +11,13 @@ const { reset, jumpToState } = ActionCreators;
 const Panel = styled.div`
   padding: 20px;
   font-size: 14px;
+  font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+`
+const GraphLabel = styled.span`
+  font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+  font-weight: 700;
+  margin-right: 10px;
 `
 
 function reducer() {
@@ -71,25 +77,25 @@ export default class VisMonitor extends (PureComponent || Component) {
           jumpToState={(stateId) => dispatch(jumpToState(stateId))}
           />
 
-        <div>state.todos.length:</div>
-
-        {/* todo: could dynamically define the state -> value function? */}
-        <LineGraph
-          data={todosLength}
-          currentStateId={currentStateIndex}
-          width={150}
-          height={30}
-          setSelectedStateId={this.setSelectedStateId}
-          selectedStateId={this.state.selectedStateId}
-          jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-          />
-
         <div>
-          hovered state Id: {this.state.selectedStateId}
+
+          <GraphLabel>state.todos.length</GraphLabel>
+
+          {/* todo: could dynamically define the state -> value function? */}
+          <LineGraph
+            data={todosLength}
+            currentStateId={currentStateIndex}
+            width={150}
+            height={25}
+            setSelectedStateId={this.setSelectedStateId}
+            selectedStateId={this.state.selectedStateId}
+            jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+            />
         </div>
 
+
         <div>
-          current state index: {currentStateIndex}
+          Debug: hovered state Id: {this.state.selectedStateId}, current state index: {currentStateIndex}
         </div>
       </Panel>
     );

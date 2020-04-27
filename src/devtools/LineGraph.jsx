@@ -5,6 +5,7 @@ import { clientPoint } from 'd3-selection';
 
 const GraphContainer = styled.svg`
   border: solid thin #eee;
+  cursor: pointer;
 `
 
 const Line = ({ path, stroke, fill, strokeWidth }) => {
