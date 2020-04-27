@@ -2,26 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import * as d3 from 'd3';
 import { clientPoint } from 'd3-selection';
+import Line from './Line';
 
 const GraphContainer = styled.svg`
   border: solid thin #eee;
   cursor: pointer;
 `
-
-const Line = ({ path, stroke, fill, strokeWidth }) => {
-  return <path
-    d={path}
-    fill={fill}
-    stroke={stroke}
-    strokeWidth={strokeWidth}
-    />
-}
-
-Line.defaultProps = {
-  stroke:       'blue',
-  fill:         'none',
-  strokeWidth:  2
-}
 
 const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
 
