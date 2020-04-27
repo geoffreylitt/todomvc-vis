@@ -10,6 +10,11 @@ const GraphContainer = styled.svg`
   cursor: pointer;
 `
 
+const CurrentValue = styled.div`
+  display: inline-block;
+  color: #ccc;
+`
+
 const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
 
   const xScale = d3.scaleBand()
@@ -26,6 +31,18 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
                 .domain(uniq(data.map(d => d.value)))
                 .range(d3.schemePastel1)
 
+  const xPosToValue = (xPos) => {
+    const index = Math.round((xPos / xScale.step()));
+    const domain = xScale.domain();
+    if (index >= domain.length) {
+      return domain.slice(-1)[0];
+    } else if (index < 0) {
+      return domain[0];
+    } else {
+      return domain[index]
+    }
+  }
+
   const selectionMarker = d3.line().curve(d3.curveLinear)([
       [xScale(selectedStateId), yScale.range()[0]],
       [xScale(selectedStateId), yScale.range()[1]],
@@ -35,10 +52,7 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
 
   const getStateIdFromMouseEvent = (e) => {
     const [xPos, yPos] = d3.clientPoint(e.target, e);
-    const position = {
-      x: xScale.invert(xPos),
-    };
-    return bisect(data, position.x, 1);
+    return xPosToValue(xPos);
   }
 
   const onMouseMove = (e) => {
@@ -66,10 +80,20 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
     </rect>
   })
 
-  return <GraphContainer width={width} height={height} >
-    { rects }
-    <Line path={selectionMarker} stroke='#ffcece' />
-  </GraphContainer>
+
+  let selectedValue;
+
+  if (selectedStateId && data.find(d => d.stateId === selectedStateId)) {
+    selectedValue = data.find(d => d.stateId === selectedStateId).value
+  }
+
+  return <>
+    <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
+      { rects }
+      <Line path={selectionMarker} stroke='#ffcece' />
+    </GraphContainer>
+    { selectedValue ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
+  </>
 }
 
 

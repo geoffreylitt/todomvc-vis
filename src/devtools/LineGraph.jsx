@@ -7,6 +7,12 @@ import Line from './Line';
 const GraphContainer = styled.svg`
   border: solid thin #eee;
   cursor: pointer;
+  margin-right: 10px;
+`
+
+const CurrentValue = styled.div`
+  display: inline-block;
+  color: #ccc;
 `
 
 const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
@@ -52,11 +58,22 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
     jumpToState(getStateIdFromMouseEvent(e));
   }
 
-  return <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
-    <Line path={line(activeData)} stroke='#a6d2ff' />
-    <Line path={line(inactiveData)} stroke="#eee" />
-    <Line path={selectionMarker} stroke='#ffcece' />
-  </GraphContainer>
+  let selectedValue;
+
+  if (selectedStateId && data.find(d => d.stateId === selectedStateId)) {
+    selectedValue = data.find(d => d.stateId === selectedStateId).value
+  }
+
+  return <>
+    <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
+      <Line path={line(activeData)} stroke='#a6d2ff' />
+      <Line path={line(inactiveData)} stroke="#eee" />
+      <Line path={selectionMarker} stroke='#ffcece' />
+
+    </GraphContainer>
+
+    { selectedValue ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
+  </>
 }
 
 
