@@ -81,7 +81,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
     return (
       <Panel>
-        <h3>6.894 A4 Prototype, Geoffrey Litt <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/"><span style={{fontWeight: "normal"}}>(project background / description)</span></a></h3>
+        <h3>6.894 FP Prototype, Geoffrey Litt <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/"><span style={{fontWeight: "normal"}}>(project background / description)</span></a></h3>
 
         <div>
           Try it out: 1) do some things in the app, 2) hover to navigate past states, 3) click to rewind the app state to a past version.
