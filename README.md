@@ -14,7 +14,9 @@ Often, the best way to understand a program is to see the data inside as it runs
 This is particularly true for interactive systems, where you can
 play with a UI and get a sense for what happens as you provide different inputs.
 
-Many research projects have explored ideas in this area:
+Many research projects have explored ideas in this area—
+both to help novices learn to program,
+and to help proficient programmers understand and debug their code.
 
 [Learnable Programming](http://worrydream.com/LearnableProgramming/) by Bret Victor, which identified runtime data visualization as a key component of making programs understandable, and inspired much of the subsequent work in this area:
 
@@ -34,6 +36,48 @@ Many research projects have explored ideas in this area:
 
 Despite the progress made by these projects, there are important research questions in this space which haven't been fully addressed yet, which I aim to explore in this project:
 
+## How can runtime visualization help with navigating execution traces?
+
+A critical question for runtime program visualization is:
+what are the best concrete, specific use cases?
+
+I've recently been using the "time-travel debugging" functionality
+in [Redux Devtools](https://github.com/reduxjs/redux-devtools),
+which lets you scrub back in time to previous states of the application.
+This is a tremendously useful feature.
+However, the views of state provided by the tool are primitive,
+mostly amounting to a rich viewer for raw JSON data. It's easy to drill
+into the state at any individual point in time, or to see state diffs
+at each point in time,
+but it's hard to get a general sense of how the state evolved over time.
+
+When using this tool myself to navigate large execution traces,
+I often struggle to find the right previous state
+that I want to navigate to. I find myself scrubbing back and forth
+in time, blindly searching. See the [video demo](https://www.loom.com/share/164ad22b95554784bf06919781ec3fe5)
+for a brief example of this.
+
+My plan for this project is to build on the existing Redux Devtools
+infrastructure and add data visualizations to help better answer
+the questions that I've found myself asking:
+
+* how did the system's state change over time?
+* What's an overview/summary of the system's state at this one point in time? Does anything in that state violate my expectations?
+* where is the prior state that I want to navigate back to, to investigate this particular bug?
+
+These ideas aren't limited to Redux either, they apply to
+any system for navigating recorded execution traces.
+
+One exciting future deployment path is in [WebReplay](https://webreplay.io/), an
+emerging technology spinning out of the Firefox team
+for record-and-replay debugging in the web browser.
+For example, they offer the ability to retroactively add/edit `console.log` statements
+in Javascript code and have those statements execute on previously recorded
+execution traces. Currently their views for navigating execution traces
+are limited, so some of the same challenges apply as in Redux Dev Tools.
+I've been discussing with the team working on that project the possibility
+of implementing some of my visualization ideas in their debugger environment.
+
 ### How can we visualize generic user interfaces?
 
 Some other systems like Python Tutor aim to visualize programs of any kind. This forces them to focus on low-level details like individual variables and lines of code, which makes them more useful for beginner programmers understanding how Python works than for an experienced programmer trying to understand a large Python program. By focusing on UIs as a specific category of program, I hope to provide useful constraints leading to more useful visualizations.
@@ -45,9 +89,9 @@ My target domain is any interactive web application built with the popular [Redu
 ### How can we visualize abstract conceptual state, not low-level state?
 
 Many runtime visualizations are fairly low-level, focusing on
-individual lines of source code or variable values (see the Python tutor
-example above for one example). This is especially true when
-the visualization is linked to the source code—if the code
+individual lines of source code or variable values. See the Python tutor
+example above for one concrete example. This is especially true when
+the visualization is linked to the source code. If the code
 doesn't fit on one screen, the data can't be runtime-visualized on one screen.
 Hoffswell et al achieve a higher level of abstraction by working with
 the declarative Vega language, but by tying their visualization to
@@ -57,10 +101,20 @@ Unfortunately, most complex UIs have logic spread across many files,
 making the inline source code view impractical for visualizing
 overall system behavior.
 
-In this work I aim to capture a higher-level view of a system's behavior, decoupled from source code. This begs the question: how to obtain this
-higher-level view—which details are important, and which ones can be omitted?
+In this work I aim to capture a higher-level view of a system's behavior.
+Rather than visualize specific small local snippets of data,
+I want to visualize derived quantities that capture the essence of
+the behavior.
 
-The Redux architecture offers a convenient mechanism for starting to answer
+Brad Myers' [taxonomy of program visualization](https://www.cs.cmu.edu/~bam/papers/vltax2.pdf)
+gives name to these different styles of visualization. **Dynamic data visualization**
+automatically provides low-level views of existing state of the program, whereas
+**dynamic algorithm visualization** allows the programmer to add additional
+information about how to display the program's behavior.
+
+This begs the question: how should we specify this higher-level view? Which details are important, and which ones can be omitted?
+
+The Redux architecture offers one convenient mechanism for starting to answer
 this question. It encourages the entire core UI state to be captured in a centralized object, and all UI actions to go through a single dispatcher. Redux apps are usually
 split up across many files, but this centralized state and stream of actions
 provides a useful focus for visualizing the core essence of the system,
@@ -72,20 +126,22 @@ up the todo character by character is considered local state and is managed
 privately by the text input component. This means that adding a todo
 is registered as a single atomic action in the system's history.
 
-[Redux Devtools](https://github.com/reduxjs/redux-devtools) is an existing
-project by the Redux team that exploits this principle to provide
-a useful debugging experience for Redux apps, including inspecting
-state and "time-travel debugging" by returning to previous app states.
-However, the views of state provided by the tool are primitive,
-mostly amounting to a rich viewer for raw JSON data.
-When using this DevTools myself, I often struggle to find the right previous state
-that I want to navigate to, and find myself scrubbing back and forth
-in time.
+So, Redux is convenient, because it already requires the programmer
+to make some choices around what state is essential. But this
+probably isn't fully sufficient for explaining the essence of the
+program's behavior—some details excluded by the main app state are worth
+visualizing; conversely, some parts of the main app state need to be
+further aggregated and condensed for easier comprehension. I think
+the programmer should be able to dynamically specify ad hoc expressions to visualize,
+and I'm curious to explore how useful this is in practice.
 
-My plan for this project is to build on the existing Redux Devtools infrastructure and add data visualizations to help better answer questions like:
-
-* how did the system's core state change over time?
-* where is the prior state that I want to navigate back to?
+In some sense, I think of this as "live literate programming"—
+like literate programming, the programmer is encoding additional context
+into the code artifact. But instead of writing prose,
+they're creating dynamic visualizations of the program behavior
+that are useful for understanding. If the visualizations are easy enough
+to specify, maybe this can be as easy as writing code comments
+and documentation is today—not zero work, but reasonably plausible.
 
 ### How can we visualize complex objects and non-numeric values?
 
@@ -147,38 +203,14 @@ but also could help illustrate sort order, insertion/deletion over time, etc.
 
 ## Open questions
 
-One area I haven't explored much yet is allowing the programmer to customize
-what state gets visualized. An initial starting point would be letting them
-write arbitrary expressions over the app state, and choosing a type of graph
-to visualize them with. Part of the idea behind this work is that
-an application author could put work into creating an app-specific view
-of state, as a form of "live documentation".
-
 What existing work is there on visualizing nested tree data, strings, booleans, etc?
 
 One theme I want to explore in this work is going beyond targeted debugging
 ("something's wrong and I want to fix it") to general system understanding
 (onboarding a new engineer, showing them how the system fits together).
 Would be curious for any feedback on how to make this system more conducive
-to serving as a form of documentation. I'd like think of it as "live literate programming"—the programmer can encode high amounts of context like literate
-programming, but in a dynamic form tied to the program's _behavior_, not just
-the source code.
-
-## Generalizing further
-
-Upon reflection, many of the ideas I've explored so far aren't particularly
-coupled to the Redux architecture. It should be possible to generalize further
-and reduce any UI down to small pieces of important state that can be visualized over time using these techniques.
-
-One potential future deployment path is in [WebReplay](https://webreplay.io/), an
-emerging technology for record-and-replay debugging in the web browser.
-They offer the ability to retroactively add/edit `console.log` statements
-in Javascript code and have those statements execute on previously recorded
-execution traces. Currently their views for navigating execution traces
-are fairly limited, so it can be hard to understand and navigate the trace;
-I've been discussing with the team working on that project the possibility
-of implementing some of these visualizations on top of that technology.
-
+to serving as a form of documentation. There's some prior work
+on this from the lens of computing education, eg [BALSA](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.117.8787&rep=rep1&type=pdf)
 
 # Prototype Implementation
 
