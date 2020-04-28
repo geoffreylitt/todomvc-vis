@@ -145,12 +145,24 @@ but also could help illustrate sort order, insertion/deletion over time, etc.
 
 ![](sketches/collection.png)
 
+## Open questions
+
 One area I haven't explored much yet is allowing the programmer to customize
 what state gets visualized. An initial starting point would be letting them
 write arbitrary expressions over the app state, and choosing a type of graph
 to visualize them with. Part of the idea behind this work is that
 an application author could put work into creating an app-specific view
 of state, as a form of "live documentation".
+
+What existing work is there on visualizing nested tree data, strings, booleans, etc?
+
+One theme I want to explore in this work is going beyond targeted debugging
+("something's wrong and I want to fix it") to general system understanding
+(onboarding a new engineer, showing them how the system fits together).
+Would be curious for any feedback on how to make this system more conducive
+to serving as a form of documentation. I'd like think of it as "live literate programming"—the programmer can encode high amounts of context like literate
+programming, but in a dynamic form tied to the program's _behavior_, not just
+the source code.
 
 ## Generalizing further
 
