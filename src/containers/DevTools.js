@@ -20,7 +20,7 @@ const DevTools = createDevTools(
     changePositionKey="ctrl-q"
     changeMonitorKey='ctrl-m'
     defaultIsVisible={true}
-    defaultPosition="bottom"
+    defaultSize={0.3}
   >
     <VisMonitor />
     <LogMonitor theme="tomorrow" />

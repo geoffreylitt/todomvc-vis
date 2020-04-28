@@ -12,20 +12,24 @@ const GraphContainer = styled.svg`
 
 const CurrentValue = styled.div`
   display: inline-block;
-  color: #ccc;
+  color: #aaa;
 `
 
 const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
+  // add another data point to line graph, to align with category graph
+  // todo: think about a more robust way to do this... kinda hacky
+  const lastDataPoint = data.slice(-1)[0];
+  let graphData = data.concat([{ stateId: lastDataPoint.stateId + 1, value: lastDataPoint.value }])
 
-  const activeData = data.filter(d => d.stateId <= currentStateId)
-  const inactiveData = data.filter(d => d.stateId >= currentStateId)
+  let activeData = graphData.filter(d => d.stateId <= currentStateId)
+  const inactiveData = graphData.filter(d => d.stateId >= currentStateId)
 
   const xScale = d3.scaleLinear()
-                 .domain(d3.extent(data, d => d.stateId))
+                 .domain(d3.extent(graphData, d => d.stateId))
                  .range([1, width - 1]);
 
   const yScale = d3.scaleLinear()
-                 .domain(d3.extent(data, d => d.value))
+                 .domain(d3.extent(graphData, d => d.value))
                  .range([height - 1, 1]);
 
   const line = d3.line()
@@ -47,7 +51,14 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
       x: xScale.invert(xPos),
       y: yScale.invert(yPos)
     };
-    return bisect(data, position.x, 1);
+    const stateId = bisect(graphData, position.x, 1);
+
+    // clamp selected state to the last real data point
+    if (stateId <= lastDataPoint.stateId) {
+      return stateId;
+    } else {
+      return lastDataPoint.stateId
+    }
   }
 
   const onMouseMove = (e) => {
@@ -60,8 +71,8 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
 
   let selectedValue;
 
-  if (selectedStateId && data.find(d => d.stateId === selectedStateId)) {
-    selectedValue = data.find(d => d.stateId === selectedStateId).value
+  if (selectedStateId && graphData.find(d => d.stateId === selectedStateId)) {
+    selectedValue = graphData.find(d => d.stateId === selectedStateId).value
   }
 
   return <>
@@ -72,7 +83,7 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
 
     </GraphContainer>
 
-    { selectedValue ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
+    { (selectedValue !== undefined) ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
   </>
 }
 

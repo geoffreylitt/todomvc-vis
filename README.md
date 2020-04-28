@@ -1,4 +1,4 @@
-# 6.894 FP: Redux Visualization
+# 6.894 FP: UI Execution Visualization
 
 A final project repo for 6.894 Interactive Data Visualization at MIT
 
@@ -18,15 +18,15 @@ he convincingly demonstrated a vision of making program state visible, and made 
 Victor's work was a roadmap more than a specific implementation; since that publication, projects like [Theseus](https://dl-acm-org.libproxy.mit.edu/doi/10.1145/2556288.2557409)
 and [Python Tutor](http://www.pythontutor.com/) have tackled some of the challenges of executing on this vision. A particular inspiration for this project is [Augmenting Code with In Situ Visualizations to Aid Program Understanding](https://dl-acm-org.libproxy.mit.edu/doi/10.1145/3173574.3174106), by Jane Hoffswell, Arvind Satyanarayan, and Jeffrey Heer, which proposed a design space for visualizations of program state included inline with source code.
 
-Despite the progress made by those projects, certain important limitations remain, which I aim to explore with this project. Here are some principles/goals:
+Despite the progress made by those projects, certain important limitations remain, which I aim to explore with this project. Here are some principles/goals which I believe are important for usable execution visualizations and haven't been fully addressed by existing research.
 
-### Visualizing general UI code
+### Visualize arbitrary UI code
 
 I aim to visualize the behavior of interactive UIs built with the [Redux](https://redux.js.org/) Javascript library (also known as the [Elm Architecture](https://guide.elm-lang.org/architecture/). My hypothesis is that this domain is broad enough to be widely useful, but narrow enough to make it substantially more tractable than the general problem of visualizing arbitrary programs.
 
 Some other systems like Python Tutor aim to visualize arbitrary programs, which forces them to focus on low-level details and doesn't allow them to make strong assumptions about what the program does. On the other hand, Hoffswell/Satyanarayan/Heer's work focuses on the narrower domain of data visualization, which limits the applications of their work. I'm aiming for a middle ground.
 
-### Higher-level visualizations
+### Visualize abstract conceptual state, not low-level code
 
 All of the above work focuses primarily on visualizing in the context of viewing the actual source code.
 This means the scope of visualization is limited to the code that's visible on the screen.
@@ -55,7 +55,7 @@ add data visualizations to help better answer this question of
 
 _todo: create a fuller list of user questions I aim to answer_.
 
-### Complex objects, non-numeric values
+### Visualize complex objects and non-numeric values
 
 Many runtime visualization projects focus on example programs which have
 relatively simple state shape, with lots of numeric or graphical values that are

@@ -12,7 +12,7 @@ const GraphContainer = styled.svg`
 
 const CurrentValue = styled.div`
   display: inline-block;
-  color: #ccc;
+  color: #aaa;
 `
 
 const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
