@@ -1,12 +1,17 @@
 # 6.894 FP: UI Execution Visualization
 
-A final project repo for 6.894 Interactive Data Visualization at MIT
+A final project repo for 6.894 Interactive Data Visualization at MIT.
 
 By Geoffrey Litt, glitt@mit.edu
 
-[⏯ Live demo link (early prototype)](https://github.mit.edu/pages/6894-sp20/FP-Program-Execution-Visualization/)
+## Prototype
 
-[📹 Video demo (early prototype)](https://www.loom.com/share/164ad22b95554784bf06919781ec3fe5)
+So far I have some notes on the problem/goals included below in this Readme,
+and some very early interactive prototypes that I've started building:
+
+[⏯ Live demo link](https://github.mit.edu/pages/6894-sp20/FP-Program-Execution-Visualization/)
+
+[📹 Video demo](https://www.loom.com/share/164ad22b95554784bf06919781ec3fe5)
 
 ## Problem statement
 
