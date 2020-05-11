@@ -1,0 +1,820 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{brown1984}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9f51b4aef06d212ec26aa6eea7d12a60}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Marc\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=6a9c16ef79ae932cd7e8bc985da5a937}{%
+           family={Sedgewick},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{ae5957971c7baead1d0d24702ae1669d}
+      \strng{fullhash}{ae5957971c7baead1d0d24702ae1669d}
+      \strng{bibnamehash}{ae5957971c7baead1d0d24702ae1669d}
+      \strng{authorbibnamehash}{ae5957971c7baead1d0d24702ae1669d}
+      \strng{authornamehash}{ae5957971c7baead1d0d24702ae1669d}
+      \strng{authorfullhash}{ae5957971c7baead1d0d24702ae1669d}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A software environment is described which provides facilities at a variety of levels for “animating” algorithms: exposing properties of programs by displaying multiple dynamic views of the program and associated data structures. The system is operational on a network of graphics-based, personal workstations and has been used successfully in several applications for teaching and research in computer science and mathematics. In this paper, we outline the conceptual framework that we have developed for animating algorithms, describe the system that we have implemented, and give several examples drawn from the host of algorithms that we have animated.}
+      \field{booktitle}{Proceedings of the 11th Annual Conference on {{Computer}} Graphics and Interactive Techniques}
+      \field{day}{1}
+      \field{isbn}{978-0-89791-138-2}
+      \field{month}{1}
+      \field{series}{{{SIGGRAPH}} '84}
+      \field{title}{A System for Algorithm Animation}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{1984}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{177\bibrangedash 186}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/800031.808596
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/4XLPNHXX/Brown and Sedgewick - 1984 - A system for algorithm animation.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.org/10.1145/800031.808596
+      \endverb
+      \verb{url}
+      \verb http://doi.org/10.1145/800031.808596
+      \endverb
+    \endentry
+    \entry{czaplicki}{online}{}
+      \name{author}{1}{}{%
+        {{hash=bd0b601d2ea72eeb81587cf33772db14}{%
+           family={Czaplicki},
+           familyi={C\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{fullhash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{bibnamehash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{authorbibnamehash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{authornamehash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{authorfullhash}{bd0b601d2ea72eeb81587cf33772db14}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The {{Elm Architecture}} · {{An Introduction}} to {{Elm}}}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/P4VFX8C7/architecture.html
+      \endverb
+      \verb{urlraw}
+      \verb https://guide.elm-lang.org/architecture/
+      \endverb
+      \verb{url}
+      \verb https://guide.elm-lang.org/architecture/
+      \endverb
+    \endentry
+    \entry{fowler2020}{article}{}
+      \name{author}{1}{}{%
+        {{hash=973f8668c8b52a0c8c8f7822d9f6e2eb}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \strng{fullhash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \strng{bibnamehash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \strng{authorbibnamehash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \strng{authornamehash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \strng{authorfullhash}{973f8668c8b52a0c8c8f7822d9f6e2eb}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Session types are a type discipline for communication channel endpoints which allow conformance to protocols to be checked statically. Safely implementing session types requires linearity, usually in the form of a linear type system. Unfortunately, linear typing is difficult to integrate with graphical user interfaces (GUIs), and to date most programs using session types are command line applications. In this paper, we propose the first principled integration of session typing and GUI development by building upon the Model-View-Update (MVU) architecture, pioneered by the Elm programming language. We introduce \$\textbackslash{}lambda\_\{\textbackslash{}textsf\{MVU\}\}\$, the first formal model of the MVU architecture, and prove it sound. By extending \$\textbackslash{}lambda\_\{\textbackslash{}textsf\{MVU\}\}\$ with \textbackslash{}emph\{commands\} as found in Elm, along with \textbackslash{}emph\{linearity\} and \textbackslash{}emph\{model transitions\}, we show the first formal integration of session typing and GUI programming. We implement our approach in the Links web programming language, and show examples including a two-factor authentication workflow and multi-room chat server.}
+      \field{day}{13}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arxiv}
+      \field{month}{1}
+      \field{shorttitle}{Model-{{View}}-{{Update}}-{{Communicate}}}
+      \field{title}{Model-{{View}}-{{Update}}-{{Communicate}}: {{Session Types}} Meet the {{Elm Architecture}}}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{eprint}
+      \verb 1910.11108
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/689LC7JQ/Fowler - 2020 - Model-View-Update-Communicate Session Types meet .pdf;/Users/geoffreylitt/Zotero/storage/NFXV2J5L/1910.html
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1910.11108
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1910.11108
+      \endverb
+      \keyw{Computer Science - Programming Languages}
+    \endentry
+    \entry{hoffswell2018a}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=2b31879f013ece5a9e1cc879ce96f73a}{%
+           family={Hoffswell},
+           familyi={H\bibinitperiod},
+           given={Jane},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ec2a9922637069508ab584ad1018d42b}{%
+           family={Satyanarayan},
+           familyi={S\bibinitperiod},
+           given={Arvind},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c1fc05b7156dc351ceebcc7f14fe27ee}{%
+           family={Heer},
+           familyi={H\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Montreal QC, Canada}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \strng{fullhash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \strng{bibnamehash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \strng{authorbibnamehash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \strng{authornamehash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \strng{authorfullhash}{fff2307ae57bcb6f4c39fc29068b3fc7}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Programmers must draw explicit connections between their code and runtime state to properly assess the correctness of their programs. However, debugging tools often decouple the program state from the source code and require explicitly invoked views to bridge the rift between program editing and program understanding. To unobtrusively reveal runtime behavior during both normal execution and debugging, we contribute techniques for visualizing program variables directly within the source code. We describe a design space and placement criteria for embedded visualizations. We evaluate our in situ visualizations in an editor for the Vega visualization grammar. Compared to a baseline development environment, novice Vega users improve their overall task grade by about 2 points when using the in situ visualizations and exhibit significant positive effects on their self-reported speed and accuracy.}
+      \field{booktitle}{Proceedings of the 2018 {{CHI Conference}} on {{Human Factors}} in {{Computing Systems}}}
+      \field{day}{21}
+      \field{isbn}{978-1-4503-5620-6}
+      \field{month}{4}
+      \field{series}{{{CHI}} '18}
+      \field{title}{Augmenting {{Code}} with {{In Situ Visualizations}} to {{Aid Program Understanding}}}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/3173574.3174106
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/YHWWBVN2/Hoffswell et al. - 2018 - Augmenting Code with In Situ Visualizations to Aid.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.org/10.1145/3173574.3174106
+      \endverb
+      \verb{url}
+      \verb http://doi.org/10.1145/3173574.3174106
+      \endverb
+      \keyw{code augmentation,debugging,program behavior,program understanding,visualization}
+    \endentry
+    \entry{kang2017}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=c2593dddb8f26ac7d46ddd1de0054229}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Hyeonsu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=1fc5e97868fb534d658782397c022852}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Philip\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Québec City QC Canada}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \strng{fullhash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \strng{bibnamehash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \strng{authorbibnamehash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \strng{authornamehash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \strng{authorfullhash}{4ea17e9b7a2ed80498d8182b10f4faab}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Visualizations of run-time program state help novices form proper mental models and debug their code. We push this technique to the extreme by posing the following question: What if a live programming environment for an imperative language always displays the entire history of all run-time values for all program variables all the time? To explore this question, we built a prototype live IDE called Omnicode (“Omniscient Code”) that continually runs the user’s Python code and uses a scatterplot matrix to visualize the entire history of all of its numerical values, along with meaningful numbers derived from other data types. To filter the visualizations and hone in on specific points of interest, the user can brush and link over the scatterplots or select portions of code. They can also zoom in to view detailed stack and heap visualizations at each execution step. An exploratory study on 10 novice programmers discovered that they found Omnicode to be useful for debugging, forming mental models, explaining their code to others, and discovering moments of serendipity that would not have been likely within an ordinary IDE.}
+      \field{booktitle}{Proceedings of the 30th {{Annual ACM Symposium}} on {{User Interface Software}} and {{Technology}}}
+      \field{day}{20}
+      \field{eventtitle}{{{UIST}} '17: {{The}} 30th {{Annual ACM Symposium}} on {{User Interface Software}} and {{Technology}}}
+      \field{isbn}{978-1-4503-4981-9}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{shorttitle}{Omnicode}
+      \field{title}{Omnicode: {{A Novice}}-{{Oriented Live Programming Environment}} with {{Always}}-{{On Run}}-{{Time Value Visualizations}}}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{737\bibrangedash 745}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1145/3126594.3126632
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/PDKJMA9H/Kang and Guo - 2017 - Omnicode A Novice-Oriented Live Programming Envir.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3126594.3126632
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3126594.3126632
+      \endverb
+      \keyw{program visualization}
+    \endentry
+    \entry{ko2004}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=1d34de1e022585975bb72dede5d077e0}{%
+           family={Ko},
+           familyi={K\bibinitperiod},
+           given={Andrew\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=7f3139b9d8c689d2ae47ba9be98a69f0}{%
+           family={Myers},
+           familyi={M\bibinitperiod},
+           given={Brad\bibnamedelima A.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Vienna, Austria}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{6ce104bcf37158cf4c606466d3ff541e}
+      \strng{fullhash}{6ce104bcf37158cf4c606466d3ff541e}
+      \strng{bibnamehash}{6ce104bcf37158cf4c606466d3ff541e}
+      \strng{authorbibnamehash}{6ce104bcf37158cf4c606466d3ff541e}
+      \strng{authornamehash}{6ce104bcf37158cf4c606466d3ff541e}
+      \strng{authorfullhash}{6ce104bcf37158cf4c606466d3ff541e}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Debugging is still among the most common and costly of programming activities. One reason is that current debugging tools do not directly support the inquisitive nature of the activity. Interrogative Debugging is a new debugging paradigm in which programmers can ask why did and even why didn’t questions directly about their program’s runtime failures. The Whyline is a prototype Interrogative Debugging interface for the Alice programming environment that visualizes answers in terms of runtime events directly relevant to a programmer’s question. Comparisons of identical debugging scenarios from user tests with and without the Whyline showed that the Whyline reduced debugging time by nearly a factor of 8, and helped programmers complete 40\% more tasks.}
+      \field{booktitle}{Proceedings of the 2004 Conference on {{Human}} Factors in Computing Systems - {{CHI}} '04}
+      \field{eventtitle}{The 2004 Conference}
+      \field{isbn}{978-1-58113-702-6}
+      \field{langid}{english}
+      \field{shorttitle}{Designing the Whyline}
+      \field{title}{Designing the Whyline: A Debugging Interface for Asking Questions about Program Behavior}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{151\bibrangedash 158}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1145/985692.985712
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/4PRZXVG7/Ko and Myers - 2004 - Designing the whyline a debugging interface for a.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://portal.acm.org/citation.cfm?doid=985692.985712
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?doid=985692.985712
+      \endverb
+      \keyw{program visualization}
+    \endentry
+    \entry{lerner2020}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=9c7ae99736a2efb2e39ab66f9cc19891}{%
+           family={Lerner},
+           familyi={L\bibinitperiod},
+           given={Sorin},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \strng{fullhash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \strng{bibnamehash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \strng{authorbibnamehash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \strng{authornamehash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \strng{authorfullhash}{9c7ae99736a2efb2e39ab66f9cc19891}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Live programming is a regime in which the programming environment provides continual feedback, most often in the form of runtime values. In this paper, we present Projection Boxes, a novel visualization technique for displaying runtime values of programs. The key idea behind projection boxes is to start with a full semantics of the program, and then use projections to pick a subset of the semantics to display. By varying the projection used, projection boxes can encode both previously known visualization techniques, and also new ones. As such, projection boxes provide an expressive and configurable framework for displaying runtime information. Through a user study we demonstrate that (1) users find projection boxes and their configurability useful (2) users are not distracted by the always-on visualization (3) a key driving force behind the need for a configurable visualization for live programming lies with the wide variation in programmer preferences.}
+      \field{booktitle}{Proceedings of the 2020 {{CHI Conference}} on {{Human Factors}} in {{Computing Systems}}}
+      \field{shorttitle}{Projection {{Boxes}}}
+      \field{title}{Projection {{Boxes}}: {{On}}-the-Fly {{Reconfigurable Visualization}} for {{Live Programming}}}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1145/3313831.3376494
+      \endverb
+    \endentry
+    \entry{lieber2014}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=466a9bc23fe3d89a153e4b1c656c6910}{%
+           family={Lieber},
+           familyi={L\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4e37d0527816c22a15c0f4a05126a3e3}{%
+           family={Brandt},
+           familyi={B\bibinitperiod},
+           given={Joel\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=121343d23d64b3354929983e3e446ef3}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Rob\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Toronto, Ontario, Canada}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{fullhash}{72ef183ee88099bf873395d1a562269f}
+      \strng{bibnamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authorbibnamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authornamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authorfullhash}{72ef183ee88099bf873395d1a562269f}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present Theseus, an IDE extension that visualizes run­ time behavior within a JavaScript code editor. By displaying real-time information about how code actually behaves dur­ ing execution, Theseus proactively addresses misconceptions by drawing attention to similarities and differences between the programmer’s idea of what code does and what it actu­ ally does. To understand how programmers would respond to this kind of an always-on visualization, we ran a lab study with graduate students, and interviewed 9 professional pro­ grammers who were asked to use Theseus in their day-to-day work. We found that users quickly adopted strategies that are unique to always-on, real-time visualizations, and used the additional information to guide their navigation through their code.}
+      \field{booktitle}{Proceedings of the 32nd Annual {{ACM}} Conference on {{Human}} Factors in Computing Systems - {{CHI}} '14}
+      \field{eventtitle}{The 32nd Annual {{ACM}} Conference}
+      \field{isbn}{978-1-4503-2473-1}
+      \field{langid}{english}
+      \field{title}{Addressing Misconceptions about Code with Always-on Programming Visualizations}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{2481\bibrangedash 2490}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2556288.2557409
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/44LDG267/Lieber et al. - 2014 - Addressing misconceptions about code with always-o.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
+      \endverb
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
+      \endverb
+    \endentry
+    \entry{meyer2006}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=77204ef7a14a221ea8f3278cd0d02beb}{%
+           family={Meyer},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=56813febf118f09066b46910a9c468f9}{%
+           family={Gîrba},
+           familyi={G\bibinitperiod},
+           given={Tudor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=66f03c40dd11433f8b22403365dc3d60}{%
+           family={Lungu},
+           familyi={L\bibinitperiod},
+           given={Mircea},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Brighton, United Kingdom}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \strng{fullhash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \strng{bibnamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \strng{authorbibnamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \strng{authornamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \strng{authorfullhash}{a702bc76d1e255362f22f86b4e1a4b4d}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Data visualization is the process of representing data as pictures to support reasoning about the underlying data. For the interpretation to be as easy as possible, we need to be as close as possible to the original data. As most visualization tools have an internal metamodel, which is different from the one for the presented data, they usually need to duplicate the original data to conform to their metamodel. This leads to an increase in the resources needed, increase which is not always justified. In this work we argue for the need of having an engine that is as close as possible to the data and we present our solution of moving the visualization tool to the data, instead of moving the data to the visualization tool. Our solution also emphasizes the necessity of reusing basic blocks to express complex visualizations and allowing the programmer to script the visualization using his preferred tools, rather than a third party format. As a validation of the expressiveness of our framework, we show how we express several already published visualizations and describe the pros and cons of the approach.}
+      \field{booktitle}{Proceedings of the 2006 {{ACM}} Symposium on {{Software}} Visualization - {{SoftVis}} '06}
+      \field{eventtitle}{The 2006 {{ACM}} Symposium}
+      \field{isbn}{978-1-59593-464-2}
+      \field{langid}{english}
+      \field{shorttitle}{Mondrian}
+      \field{title}{Mondrian: An Agile Information Visualization Framework}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{135}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1145/1148493.1148513
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/SPYK98W2/Meyer et al. - 2006 - Mondrian an agile information visualization frame.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://portal.acm.org/citation.cfm?doid=1148493.1148513
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?doid=1148493.1148513
+      \endverb
+    \endentry
+    \entry{myers1990}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7f3139b9d8c689d2ae47ba9be98a69f0}{%
+           family={Myers},
+           familyi={M\bibinitperiod},
+           given={Brad\bibnamedelima A.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \strng{fullhash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \strng{bibnamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \strng{authorbibnamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \strng{authornamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \strng{authorfullhash}{7f3139b9d8c689d2ae47ba9be98a69f0}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{There has been a great interest recently in systems that use graphics to aid in the programming, debugging, and understanding of computer systems. The terms ‘‘Visual Programming’’ and ‘‘Program Visualization’’ have been applied to these systems. This paper attempts to provide more meaning to these terms by giving precise definitions, and then surveys a number of systems that can be classified as providing Visual Programming or Program Visualization. These systems are organized by classifying them into three different taxonomies.}
+      \field{issn}{1045926X}
+      \field{journaltitle}{Journal of Visual Languages \& Computing}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{number}{1}
+      \field{shortjournal}{Journal of Visual Languages \& Computing}
+      \field{title}{Taxonomies of Visual Programming and Program Visualization}
+      \field{urlday}{28}
+      \field{urlmonth}{4}
+      \field{urlyear}{2020}
+      \field{volume}{1}
+      \field{year}{1990}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{97\bibrangedash 123}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1016/S1045-926X(05)80036-9
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/RRUVMERM/Myers - 1990 - Taxonomies of visual programming and program visua.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S1045926X05800369
+      \endverb
+      \verb{url}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S1045926X05800369
+      \endverb
+      \keyw{program visualization}
+    \endentry
+    \entry{pollock2019}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=1f8253d21abec5b893dfa0257e2bb089}{%
+           family={Pollock},
+           familyi={P\bibinitperiod},
+           given={Josh},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a4cc10fc534af10ca4358c8b8609b85e}{%
+           family={Roesch},
+           familyi={R\bibinitperiod},
+           given={Jared},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8fec7adba61ac172e889b7a44d414778}{%
+           family={Woos},
+           familyi={W\bibinitperiod},
+           given={Doug},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a69fd5ea4c78e4b10502a7611d5a8dc0}{%
+           family={Tatlock},
+           familyi={T\bibinitperiod},
+           given={Zachary},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Athens, Greece}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{8a9afe466dfd0c21cab0d8239bbb948f}
+      \strng{fullhash}{f9e9e709bb559317723022077c17dc7c}
+      \strng{bibnamehash}{8a9afe466dfd0c21cab0d8239bbb948f}
+      \strng{authorbibnamehash}{8a9afe466dfd0c21cab0d8239bbb948f}
+      \strng{authornamehash}{8a9afe466dfd0c21cab0d8239bbb948f}
+      \strng{authorfullhash}{f9e9e709bb559317723022077c17dc7c}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Program state visualizations (PSVs) help programmers understand hidden program state like objects, references, and closures. Unfortunately, existing PSV tools do not support custom language semantics, which educators often use to introduce programming languages gradually. They also fail to visualize key pieces of program state, which can lead to incorrect and confusing visualizations.}
+      \field{booktitle}{Proceedings of the 2019 {{ACM SIGPLAN Symposium}} on {{SPLASH}}-{{E}} - {{SPLASH}}-{{E}} 2019}
+      \field{eventtitle}{The 2019 {{ACM SIGPLAN Symposium}}}
+      \field{isbn}{978-1-4503-6989-3}
+      \field{langid}{english}
+      \field{shorttitle}{Theia}
+      \field{title}{Theia: Automatically Generating Correct Program State Visualizations}
+      \field{urlday}{28}
+      \field{urlmonth}{1}
+      \field{urlyear}{2020}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{46\bibrangedash 56}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/3358711.3361625
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/FNAG6CMM/Pollock et al. - 2019 - Theia automatically generating correct program st.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?doid=3358711.3361625
+      \endverb
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?doid=3358711.3361625
+      \endverb
+    \endentry
+    \entry{reiss2003}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=5c0b9129c86d3ac2771df27751eae6ba}{%
+           family={Reiss},
+           familyi={R\bibinitperiod},
+           given={Steven\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Portland, Oregon}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Computer Society}%
+      }
+      \strng{namehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{fullhash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{bibnamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authorbibnamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authornamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authorfullhash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Dynamic software visualization should provide a programmer with insights as to what the program is doing. Most current dynamic visualizations either use program traces to show information about prior runs, slow the program down substantially, show only minimal information, or force the programmer to indicate when to turn visualizations on or off. We have developed a dynamic Java visualizer that provides a view of a program in action with low enough overhead that it can be used almost all the time by programmers to understand what their program is doing while it is doing it.}
+      \field{booktitle}{Proceedings of the 25th {{International Conference}} on {{Software Engineering}}}
+      \field{day}{3}
+      \field{isbn}{978-0-7695-1877-0}
+      \field{month}{5}
+      \field{series}{{{ICSE}} '03}
+      \field{shorttitle}{{{JIVE}}}
+      \field{title}{{{JIVE}}: Visualizing {{Java}} in Action Demonstration Description}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \field{pages}{820\bibrangedash 821}
+      \range{pages}{2}
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/X42G8K2G/Reiss - 2003 - JIVE visualizing Java in action demonstration des.pdf
+      \endverb
+    \endentry
+    \entry{reiss2007}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5c0b9129c86d3ac2771df27751eae6ba}{%
+           family={Reiss},
+           familyi={R\bibinitperiod},
+           given={Steven\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{fullhash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{bibnamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authorbibnamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authornamehash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \strng{authorfullhash}{5c0b9129c86d3ac2771df27751eae6ba}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Programmers have always been curious about what their programs are doing while it is executing, especially when the behavior is not what they are expecting. Since program execution is intricate and involved, visualization has long been used to provide the programmer with appropriate insights into program execution. This paper looks at the evolution of on-line visual representations of executing programs, showing how they have moved from concrete representations of relatively small programs to abstract representations of larger systems. Based on this examination, we describe the challenges implicit in future execution visualizations and methodologies that can meet these challenges.}
+      \field{journaltitle}{J. Vis. Lang. Comput.}
+      \field{title}{Visual Representations of Executing Programs}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1016/j.jvlc.2007.01.003
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/28TMHIMW/jvlexec-1.pdf
+      \endverb
+    \endentry
+    \entry{reiss2005}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=5c0b9129c86d3ac2771df27751eae6ba}{%
+           family={Reiss},
+           familyi={R\bibinitperiod},
+           given={Steven\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=5e100f899791e3c95efb035c41e6ba14}{%
+           family={Renieris},
+           familyi={R\bibinitperiod},
+           given={Manos},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {St. Louis, Missouri}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \strng{fullhash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \strng{bibnamehash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \strng{authorbibnamehash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \strng{authornamehash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \strng{authorfullhash}{2b26b51d565b8a7b6f10ad278ba43a81}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Dynamic software visualization is designed to provide programmers with insights as to what the program is doing. Most current dynamic visualizations either use program traces to show information about prior runs, slow the program down substantially, show only minimal information, or force the programmer to indicate when to turn visualizations on or off. We have developed a dynamic Java visualizer that provides a statement-level view of a Java program in action with low enough overhead so that it can be used almost all the time by programmers to understand what their program is doing while it is doing it.}
+      \field{booktitle}{Proceedings of the 2005 {{ACM}} Symposium on {{Software}} Visualization - {{SoftVis}} '05}
+      \field{eventtitle}{The 2005 {{ACM}} Symposium}
+      \field{isbn}{978-1-59593-073-6}
+      \field{langid}{english}
+      \field{shorttitle}{Jove}
+      \field{title}{Jove: Java as It Happens}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{115}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1145/1056018.1056034
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/V8H4ET9K/Reiss and Renieris - 2005 - Jove java as it happens.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://portal.acm.org/citation.cfm?doid=1056018.1056034
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?doid=1056018.1056034
+      \endverb
+    \endentry
+    \entry{stasko1990}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b9346be3e7951dd33c9e5bf95dae9243}{%
+           family={Stasko},
+           familyi={S\bibinitperiod},
+           given={John\bibnamedelima T.},
+           giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \strng{fullhash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \strng{bibnamehash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \strng{authorbibnamehash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \strng{authornamehash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \strng{authorfullhash}{b9346be3e7951dd33c9e5bf95dae9243}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The role of animation in understanding and evaluating programs and developing new programs is discussed. A framework for algorithm animation, called Tango, and a system based on that framework are introduced. Related work is reviewed, and the conceptual framework on which Tango is based is examined. The implementation of the Tango system is described. The first-fit bin-packing algorithm is animated to illustrate how the path-transition paradigm simplifies algorithm animation.}
+      \field{day}{1}
+      \field{issn}{0018-9162}
+      \field{journaltitle}{Computer}
+      \field{month}{9}
+      \field{number}{9}
+      \field{shortjournal}{Computer}
+      \field{shorttitle}{Tango}
+      \field{title}{Tango: {{A Framework}} and {{System}} for {{Algorithm Animation}}}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{volume}{23}
+      \field{year}{1990}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{27\bibrangedash 39}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/2.58216
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.org/10.1109/2.58216
+      \endverb
+      \verb{url}
+      \verb http://doi.org/10.1109/2.58216
+      \endverb
+    \endentry
+    \entry{victora}{online}{}
+      \name{author}{1}{}{%
+        {{hash=50dc5904f44334020075cee559d9bd9a}{%
+           family={Victor},
+           familyi={V\bibinitperiod},
+           given={Bret},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{50dc5904f44334020075cee559d9bd9a}
+      \strng{fullhash}{50dc5904f44334020075cee559d9bd9a}
+      \strng{bibnamehash}{50dc5904f44334020075cee559d9bd9a}
+      \strng{authorbibnamehash}{50dc5904f44334020075cee559d9bd9a}
+      \strng{authornamehash}{50dc5904f44334020075cee559d9bd9a}
+      \strng{authorfullhash}{50dc5904f44334020075cee559d9bd9a}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learnable {{Programming}}}
+      \field{urlday}{28}
+      \field{urlmonth}{4}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/TD257V6J/LearnableProgramming.html
+      \endverb
+      \verb{urlraw}
+      \verb http://worrydream.com/LearnableProgramming/
+      \endverb
+      \verb{url}
+      \verb http://worrydream.com/LearnableProgramming/
+      \endverb
+      \keyw{program visualization}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

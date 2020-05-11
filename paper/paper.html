@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,700" rel="stylesheet">
+  <meta name="author" content="Geoffrey Litt" />
+  <title>Abstract Program Visualization for Model-View-Update User Interfaces</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="basic.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<header id="title-block-header">
+<h1 class="title">Abstract Program Visualization for Model-View-Update User Interfaces</h1>
+<p class="author">By <a href="https://www.geoffreylitt.com/">Geoffrey Litt</a></p>
+</header>
+<p>This is the abstract</p>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#sec:related-work"><span class="toc-section-number">2</span> Related Work</a></li>
+</ul>
+</nav>
+<h1 data-number="1" id="introduction" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Lots of recent program vis work is low level. Tied directly to the source code, visualizing state at individual lines, individual variables. Makes sense for novices: small programs, need help understanding small details.</p>
+<p>OTOH: many tasks require higher level of understanding system behavior. Eg, initial explanation of a codebase. How do we make a “whiteboard drawing” live? Some challenges:</p>
+<ul>
+<li>relevant state isn’t necessarily individual variable values: need to select certain relevant attributes to visualize. Corollary: can’t be as automated as low level visualization.</li>
+<li>Too much work on “targeted debugging”, not enough on generalized understanding of a system. More specifically: if we don’t know what change you might want to make to a codebase, how can we maximally equip you to be ready to make an arbitrary change?
+<ul>
+<li>Naur Programming as theory building</li>
+</ul></li>
+<li>combines both static + dynamic aspects: code modules, abstracted state</li>
+<li>Lots of non-numeric data</li>
+</ul>
+<p>Abstract visualization is an interesting direction. Can be super-specific, eg algorithm animation <span class="citation" data-cites="brown1984 stasko1990">[<a href="#ref-brown1984" role="doc-biblioref">1</a>,<a href="#ref-stasko1990" role="doc-biblioref">15</a>]</span> or class and thread vis of <span class="citation" data-cites="reiss2003 reiss2005">[<a href="#ref-reiss2003" role="doc-biblioref">13</a>,<a href="#ref-reiss2005" role="doc-biblioref">14</a>]</span>.</p>
+<p>But a major challenge is making it easy enough for programmer to actually make it worth it <span class="citation" data-cites="reiss2007">[<a href="#ref-reiss2007" role="doc-biblioref">12</a>]</span></p>
+<p>This is an initial exploration. Some solution characteristics:</p>
+<ul>
+<li>redux apps <span class="citation" data-cites="czaplicki fowler2020">[<a href="#ref-czaplicki" role="doc-biblioref">2</a>,<a href="#ref-fowler2020" role="doc-biblioref">3</a>]</span>: 1) broader than Vega, narrower than general programs, 2) imposes a worldview of abstract state and simplified event stream. THIS IS THE HEART OF THE WORK
+<ul>
+<li>In this work: focus on TodoMVC specifically, but in theory should generalize to Redux programs. (Future work: how to efficiently generate a visualization like this one)</li>
+</ul></li>
+<li>“Guided tour”: introducing you to how the application works.</li>
+</ul>
+<h1 data-number="2" id="sec:related-work" data-number="2"><span class="header-section-number">2</span> Related Work</h1>
+<ul>
+<li>low level program vis
+<ul>
+<li>Learnable <span class="citation" data-cites="victora">[<a href="#ref-victora" role="doc-biblioref">16</a>]</span></li>
+<li>omnicode <span class="citation" data-cites="kang2017">[<a href="#ref-kang2017" role="doc-biblioref">5</a>]</span></li>
+<li>Projection boxes <span class="citation" data-cites="lerner2020">[<a href="#ref-lerner2020" role="doc-biblioref">7</a>]</span></li>
+<li>Theia <span class="citation" data-cites="pollock2019">[<a href="#ref-pollock2019" role="doc-biblioref">11</a>]</span></li>
+<li>Theseus <span class="citation" data-cites="lieber2014">[<a href="#ref-lieber2014" role="doc-biblioref">8</a>]</span></li>
+</ul></li>
+<li>Whyline, targeted interrogation <span class="citation" data-cites="ko2004">[<a href="#ref-ko2004" role="doc-biblioref">6</a>]</span></li>
+<li>In-situ: nice taxonomy of visualizations (but still limited to Vega, narrow domain) <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">4</a>]</span></li>
+<li>Myers taxonomy <span class="citation" data-cites="myers1990">[<a href="#ref-myers1990" role="doc-biblioref">10</a>]</span></li>
+<li>Redux / Elm
+<ul>
+<li>redux dev tools Tree viewer</li>
+</ul></li>
+<li>http://cs.brown.edu/~spr/research/bloom/jvlexec.pdf</li>
+<li>Steve Reiss overview</li>
+<li>Brad Myers incense</li>
+<li>Girba’s Mondrian: a toolkit for programmers building vis <span class="citation" data-cites="meyer2006">[<a href="#ref-meyer2006" role="doc-biblioref">9</a>]</span></li>
+</ul>
+<h2 data-number="2.1" id="methods" data-number="2.1"><span class="header-section-number">2.1</span> Methods</h2>
+<p>Only some initial experiments.</p>
+<p>Redux dev tools monitor D3 + react</p>
+<p>Show the mockups Developed 3-4 sparkline style visualizations</p>
+<ul>
+<li>line graph</li>
+<li>Categorical graph</li>
+<li>Collection dots view?</li>
+<li>String change view?</li>
+</ul>
+<h2 data-number="2.2" id="results" data-number="2.2"><span class="header-section-number">2.2</span> Results</h2>
+<ul>
+<li>get feedback from 1-2 people?</li>
+<li>Tried using it myself</li>
+</ul>
+<h2 data-number="2.3" id="discussion" data-number="2.3"><span class="header-section-number">2.3</span> Discussion</h2>
+<h2 class="unnumbered" data-number="" id="future-work" class="unnumbered" data-number="">Future work</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-brown1984">
+<p>1. Marc H. Brown and Robert Sedgewick. 1984. A system for algorithm animation. In <em>Proceedings of the 11th annual conference on Computer graphics and interactive techniques</em> (SIGGRAPH ’84), 177–186. <a href="https://doi.org/10.1145/800031.808596">https://doi.org/10.1145/800031.808596</a></p>
+</div>
+<div id="ref-czaplicki">
+<p>2. Evan Czaplicki. The Elm Architecture · An Introduction to Elm. Retrieved May 11, 2020 from <a href="https://guide.elm-lang.org/architecture/">https://guide.elm-lang.org/architecture/</a></p>
+</div>
+<div id="ref-fowler2020">
+<p>3. Simon Fowler. 2020. Model-View-Update-Communicate: Session Types meet the Elm Architecture. Retrieved May 11, 2020 from <a href="http://arxiv.org/abs/1910.11108">http://arxiv.org/abs/1910.11108</a></p>
+</div>
+<div id="ref-hoffswell2018a">
+<p>4. Jane Hoffswell, Arvind Satyanarayan, and Jeffrey Heer. 2018. Augmenting Code with In Situ Visualizations to Aid Program Understanding. In <em>Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems</em> (CHI ’18), 1–12. <a href="https://doi.org/10.1145/3173574.3174106">https://doi.org/10.1145/3173574.3174106</a></p>
+</div>
+<div id="ref-kang2017">
+<p>5. Hyeonsu Kang and Philip J. Guo. 2017. Omnicode: A Novice-Oriented Live Programming Environment with Always-On Run-Time Value Visualizations. In <em>Proceedings of the 30th Annual ACM Symposium on User Interface Software and Technology</em>, 737–745. <a href="https://doi.org/10.1145/3126594.3126632">https://doi.org/10.1145/3126594.3126632</a></p>
+</div>
+<div id="ref-ko2004">
+<p>6. Andrew J. Ko and Brad A. Myers. 2004. Designing the whyline: A debugging interface for asking questions about program behavior. In <em>Proceedings of the 2004 conference on Human factors in computing systems - CHI ’04</em>, 151–158. <a href="https://doi.org/10.1145/985692.985712">https://doi.org/10.1145/985692.985712</a></p>
+</div>
+<div id="ref-lerner2020">
+<p>7. Sorin Lerner. 2020. Projection Boxes: On-the-fly Reconfigurable Visualization for Live Programming. In <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</em>. <a href="https://doi.org/10.1145/3313831.3376494">https://doi.org/10.1145/3313831.3376494</a></p>
+</div>
+<div id="ref-lieber2014">
+<p>8. Tom Lieber, Joel R. Brandt, and Rob C. Miller. 2014. Addressing misconceptions about code with always-on programming visualizations. In <em>Proceedings of the 32nd annual ACM conference on Human factors in computing systems - CHI ’14</em>, 2481–2490. <a href="https://doi.org/10.1145/2556288.2557409">https://doi.org/10.1145/2556288.2557409</a></p>
+</div>
+<div id="ref-meyer2006">
+<p>9. Michael Meyer, Tudor Gîrba, and Mircea Lungu. 2006. Mondrian: An agile information visualization framework. In <em>Proceedings of the 2006 ACM symposium on Software visualization - SoftVis ’06</em>, 135. <a href="https://doi.org/10.1145/1148493.1148513">https://doi.org/10.1145/1148493.1148513</a></p>
+</div>
+<div id="ref-myers1990">
+<p>10. Brad A. Myers. 1990. Taxonomies of visual programming and program visualization. <em>Journal of Visual Languages &amp; Computing</em> 1, 1: 97–123. <a href="https://doi.org/10.1016/S1045-926X(05)80036-9">https://doi.org/10.1016/S1045-926X(05)80036-9</a></p>
+</div>
+<div id="ref-pollock2019">
+<p>11. Josh Pollock, Jared Roesch, Doug Woos, and Zachary Tatlock. 2019. Theia: Automatically generating correct program state visualizations. In <em>Proceedings of the 2019 ACM SIGPLAN Symposium on SPLASH-E - SPLASH-E 2019</em>, 46–56. <a href="https://doi.org/10.1145/3358711.3361625">https://doi.org/10.1145/3358711.3361625</a></p>
+</div>
+<div id="ref-reiss2007">
+<p>12. Steven P. Reiss. 2007. Visual representations of executing programs. <em>J. Vis. Lang. Comput.</em> <a href="https://doi.org/10.1016/j.jvlc.2007.01.003">https://doi.org/10.1016/j.jvlc.2007.01.003</a></p>
+</div>
+<div id="ref-reiss2003">
+<p>13. Steven P. Reiss. 2003. JIVE: Visualizing Java in action demonstration description. In <em>Proceedings of the 25th International Conference on Software Engineering</em> (ICSE ’03), 820–821.</p>
+</div>
+<div id="ref-reiss2005">
+<p>14. Steven P. Reiss and Manos Renieris. 2005. Jove: Java as it happens. In <em>Proceedings of the 2005 ACM symposium on Software visualization - SoftVis ’05</em>, 115. <a href="https://doi.org/10.1145/1056018.1056034">https://doi.org/10.1145/1056018.1056034</a></p>
+</div>
+<div id="ref-stasko1990">
+<p>15. John T. Stasko. 1990. Tango: A Framework and System for Algorithm Animation. <em>Computer</em> 23, 9: 27–39. <a href="https://doi.org/10.1109/2.58216">https://doi.org/10.1109/2.58216</a></p>
+</div>
+<div id="ref-victora">
+<p>16. Bret Victor. Learnable Programming. Retrieved April 28, 2020 from <a href="http://worrydream.com/LearnableProgramming/">http://worrydream.com/LearnableProgramming/</a></p>
+</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38867184-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

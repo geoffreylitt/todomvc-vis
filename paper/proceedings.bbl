@@ -1,0 +1,149 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{00}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{{\tt DOI:}\penalty0{#1}\ }
+  \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
+
+\bibitem{acm_categories}
+{ACM}. 1998.
+\newblock How to Classify Works Using ACM's Computing Classification System.
+\newblock   (1998).
+\newblock
+\newblock
+\shownote{\url{http://www.acm.org/class/how_to_use.html}.}
+
+
+\bibitem{ethics}
+{R.~E. Anderson}. 1992.
+\newblock \showarticletitle{{Social Impacts of Computing: Codes of Professional
+  Ethics}}.
+\newblock {\em Social Science Computer Review December\/} {10}, 4 (1992),
+  453--469.
+\newblock
+\showDOI{%
+\url{http://dx.doi.org/10.1177/089443939201000402}}
+
+
+\bibitem{cavender:writing}
+{Anna Cavender}, {Shari Trewin}, {and} {Vicki Hanson}. 2014.
+\newblock Accessible Writing Guide.
+\newblock   (2014).
+\newblock
+\newblock
+\shownote{\url{http://www.sigaccess.org/welcome-to-sigaccess/resources/accessible-writing-guide/}.}
+
+
+\bibitem{CHINOSAUR:venue}
+{@\_CHINOSAUR}. 2014.
+\newblock "VENUE IS TOO COLD" \#BINGO \#CHI2014.
+\newblock Tweet.   (1 May 2014).
+\newblock
+\newblock
+\shownote{Retrieved Febuary 2, 2015 from
+  \url{https://twitter.com/_CHINOSAUR/status/461864317415989248}.}
+
+
+\bibitem{heilig:sensorama}
+{Morton~L. Heilig}. 1962.
+\newblock Sensorama Simulator.
+\newblock U.S. Patent 3,050,870.   (28 August 1962).
+\newblock
+\newblock
+\shownote{Filed Februrary 22, 1962.}
+
+
+\bibitem{kaye:puc}
+{Jofish Kaye} {and} {Paul Dourish}. 2014.
+\newblock \showarticletitle{Special issue on science fiction and ubiquitous
+  computing}.
+\newblock {\em Personal and Ubiquitous Computing\/} {18}, 4 (2014), 765--766.
+\newblock
+\showISSN{1617-4909}
+\showDOI{%
+\url{http://dx.doi.org/10.1007/s00779-014-0773-4}}
+
+
+\bibitem{Klemmer:2002:WSC:503376.503378}
+{Scott~R. Klemmer}, {Michael Thomsen}, {Ethan Phelps-Goodman}, {Robert Lee},
+  {and} {James~A. Landay}. 2002.
+\newblock \showarticletitle{Where Do Web Sites Come from?: Capturing and
+  Interacting with Design History}. In {\em Proceedings of the SIGCHI
+  Conference on Human Factors in Computing Systems} {\em (CHI '02)}. ACM, New
+  York, NY, USA, 1--8.
+\newblock
+\showISBNx{1-58113-453-3}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/503376.503378}}
+
+
+\bibitem{supermetroid:snes}
+{{Nintendo R\&D1}} {and} {{Intelligent Systems}}. 1994.
+\newblock \emph{Super Metroid}.
+\newblock Game [SNES].   (18 April 1994).
+\newblock
+\newblock
+\shownote{Nintendo, Kyoto, Japan. Played August 2011.}
+
+
+\bibitem{psy:gangnam}
+{Psy}. 2012.
+\newblock Gangnam Style.
+\newblock Video.   (15 July 2012).
+\newblock
+\newblock
+\shownote{Retrieved August 22, 2014 from
+  \url{https://www.youtube.com/watch?v=9bZkp7q19f0}.}
+
+
+\bibitem{Schwartz:1995:GBF}
+{Marilyn Schwartz}. 1995.
+\newblock {\em Guidelines for Bias-Free Writing}.
+\newblock ERIC, Bloomington, IN, USA.
+\newblock
+
+
+\bibitem{sutherland:sketchpad}
+{Ivan~E. Sutherland}. 1963.
+\newblock {\em Sketchpad, a Man-Machine Graphical Communication System}.
+\newblock Ph.D. Dissertation. Massachusetts Institute of Technology, Cambridge,
+  MA.
+\newblock
+
+
+\bibitem{winner:politics}
+{Langdon Winner}. 1999.
+\newblock {\em The Social Shaping of Technology\/} (2nd ed.).
+\newblock Open University Press, UK, Chapter Do artifacts have politics?,
+  28--40.
+\newblock
+
+
+\end{thebibliography}

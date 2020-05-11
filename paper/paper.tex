@@ -1,0 +1,374 @@
+\documentclass{sigchi}
+
+% pandoc setup %
+
+
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% end pandoc setup %
+
+% Use this section to set the ACM copyright statement (e.g. for
+% preprints).  Consult the conference website for the camera-ready
+% copyright statement.
+
+% Copyright
+\CopyrightYear{2020}
+%\setcopyright{acmcopyright}
+\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+% DOI
+\doi{https://doi.org/10.1145/3313831.XXXXXXX}
+% ISBN
+\isbn{978-1-4503-6708-0/20/04}
+%Conference
+\conferenceinfo{CHI'20,}{April  25--30, 2020, Honolulu, HI, USA}
+%Price
+\acmPrice{\$15.00}
+
+% Use this command to override the default ACM copyright statement
+% (e.g. for preprints).  Consult the conference website for the
+% camera-ready copyright statement.
+
+%% HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP --
+%% Please note you need to make sure the copy for your specific
+%% license is used here!
+% \toappear{
+% Permission to make digital or hard copies of all or part of this work
+% for personal or classroom use is granted without fee provided that
+% copies are not made or distributed for profit or commercial advantage
+% and that copies bear this notice and the full citation on the first
+% page. Copyrights for components of this work owned by others than ACM
+% must be honored. Abstracting with credit is permitted. To copy
+% otherwise, or republish, to post on servers or to redistribute to
+% lists, requires prior specific permission and/or a fee. Request
+% permissions from \href{mailto:Permissions@acm.org}{Permissions@acm.org}. \\
+% \emph{CHI '16},  May 07--12, 2016, San Jose, CA, USA \\
+% ACM xxx-x-xxxx-xxxx-x/xx/xx\ldots \$15.00 \\
+% DOI: \url{http://dx.doi.org/xx.xxxx/xxxxxxx.xxxxxxx}
+% }
+
+% Arabic page numbers for submission.  Remove this line to eliminate
+% page numbers for the camera ready copy
+% \pagenumbering{arabic}
+
+% Load basic packages
+\usepackage{balance}       % to better equalize the last page
+\usepackage{graphics}      % for EPS, load graphicx instead
+\usepackage[T1]{fontenc}   % for umlauts and other diaeresis
+\usepackage{txfonts}
+\usepackage{mathptmx}
+\usepackage[pdflang={en-US},pdftex]{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{textcomp}
+
+% Some optional stuff you might like/need.
+\usepackage{microtype}        % Improved Tracking and Kerning
+% \usepackage[all]{hypcap}    % Fixes bug in hyperref caption linking
+\usepackage{ccicons}          % Cite your images correctly!
+% \usepackage[utf8]{inputenc} % for a UTF8 editor only
+
+% If you want to use todo notes, marginpars etc. during creation of
+% your draft document, you have to enable the "chi_draft" option for
+% the document class. To do this, change the very first line to:
+% "\documentclass[chi_draft]{sigchi}". You can then place todo notes
+% by using the "\todo{...}"  command. Make sure to disable the draft
+% option again before submitting your final document.
+\usepackage{todonotes}
+
+% Paper metadata (use plain text, for PDF inclusion and later
+% re-using, if desired).  Use \emtpyauthor when submitting for review
+% so you remain anonymous.
+\def\plaintitle{Abstract Program Visualization for Model-View-Update
+User Interfaces}
+\def\plainauthor{Geoffrey Litt}
+\def\emptyauthor{}
+\def\plainkeywords{Program visualization, program understanding, debugging}
+\def\plaingeneralterms{Program visualization, program understanding, debugging}
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{
+    \def\UrlFont{\sf}
+  }{
+    \def\UrlFont{\small\bf\ttfamily}
+  }}
+\makeatother
+\urlstyle{leo}
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, to give it a
+% fighting chance of not being over-written, since its job is to
+% redefine many LaTeX commands.
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{%
+  pdftitle={\plaintitle},
+% Use \plainauthor for final version.
+%  pdfauthor={\plainauthor},
+  pdfauthor={\plainauthor},
+  pdfkeywords={\plainkeywords},
+  pdfdisplaydoctitle=true, % For Accessibility
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+  hypertexnames=false
+}
+
+% create a shortcut to typeset table headings
+% \newcommand\tabhead[1]{\small\textbf{#1}}
+
+% End of preamble. Here it comes the document.
+\begin{document}
+
+\title{\plaintitle}
+
+\numberofauthors{1}
+\author{%
+  \alignauthor{Geoffrey Litt}\\
+    \affaddr{MIT CSAIL}\\
+    \email{glitt@mit.edu}\\
+}
+
+\maketitle
+
+\begin{abstract}
+  This is the abstract
+\end{abstract}
+
+
+% ACM Classfication
+
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10003120.10003121</concept_id>
+<concept_desc>Human-centered computing~Human computer interaction (HCI)</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10003120.10003121.10003125.10011752</concept_id>
+<concept_desc>Human-centered computing~Haptic devices</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+<concept>
+<concept_id>10003120.10003121.10003122.10003334</concept_id>
+<concept_desc>Human-centered computing~User studies</concept_desc>
+<concept_significance>100</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Human-centered computing~Human computer interaction (HCI)}
+\ccsdesc[300]{Human-centered computing~Haptic devices}
+\ccsdesc[100]{Human-centered computing~User studies}
+
+% Author Keywords
+\keywords{\plainkeywords}
+
+% Print the classficiation codes
+\printccsdesc
+Please use the 2012 Classifiers and see this link to embed them in the text: \url{https://dl.acm.org/ccs/ccs_flat.cfm}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Lots of recent program vis work is low level. Tied directly to the
+source code, visualizing state at individual lines, individual
+variables. Makes sense for novices: small programs, need help
+understanding small details.
+
+OTOH: many tasks require higher level of understanding system behavior.
+Eg, initial explanation of a codebase. How do we make a ``whiteboard
+drawing'' live? Some challenges:
+
+\begin{itemize}
+\tightlist
+\item
+  relevant state isn't necessarily individual variable values: need to
+  select certain relevant attributes to visualize. Corollary: can't be
+  as automated as low level visualization.
+\item
+  Too much work on ``targeted debugging'', not enough on generalized
+  understanding of a system. More specifically: if we don't know what
+  change you might want to make to a codebase, how can we maximally
+  equip you to be ready to make an arbitrary change?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Naur Programming as theory building
+  \end{itemize}
+\item
+  combines both static + dynamic aspects: code modules, abstracted state
+\item
+  Lots of non-numeric data
+\end{itemize}
+
+Abstract visualization is an interesting direction. Can be
+super-specific, eg algorithm animation \autocite{brown1984,stasko1990}
+or class and thread vis of \autocite{reiss2003,reiss2005}.
+
+But a major challenge is making it easy enough for programmer to
+actually make it worth it \autocite{reiss2007}
+
+This is an initial exploration. Some solution characteristics:
+
+\begin{itemize}
+\tightlist
+\item
+  redux apps \autocite{czaplicki,fowler2020}: 1) broader than Vega,
+  narrower than general programs, 2) imposes a worldview of abstract
+  state and simplified event stream. THIS IS THE HEART OF THE WORK
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In this work: focus on TodoMVC specifically, but in theory should
+    generalize to Redux programs. (Future work: how to efficiently
+    generate a visualization like this one)
+  \end{itemize}
+\item
+  ``Guided tour'': introducing you to how the application works.
+\end{itemize}
+
+\hypertarget{sec:related-work}{%
+\section{Related Work}\label{sec:related-work}}
+
+\begin{itemize}
+\tightlist
+\item
+  low level program vis
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Learnable \autocite{victora}
+  \item
+    omnicode \autocite{kang2017}
+  \item
+    Projection boxes \autocite{lerner2020}
+  \item
+    Theia \autocite{pollock2019}
+  \item
+    Theseus \autocite{lieber2014}
+  \end{itemize}
+\item
+  Whyline, targeted interrogation \autocite{ko2004}
+\item
+  In-situ: nice taxonomy of visualizations (but still limited to Vega,
+  narrow domain) \autocite{hoffswell2018a}
+\item
+  Myers taxonomy \autocite{myers1990}
+\item
+  Redux / Elm
+
+  \begin{itemize}
+  \tightlist
+  \item
+    redux dev tools Tree viewer
+  \end{itemize}
+\item
+  http://cs.brown.edu/\textasciitilde spr/research/bloom/jvlexec.pdf
+\item
+  Steve Reiss overview
+\item
+  Brad Myers incense
+\item
+  Girba's Mondrian: a toolkit for programmers building vis
+  \autocite{meyer2006}
+\end{itemize}
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+Only some initial experiments.
+
+Redux dev tools monitor D3 + react
+
+Show the mockups Developed 3-4 sparkline style visualizations
+
+\begin{itemize}
+\tightlist
+\item
+  line graph
+\item
+  Categorical graph
+\item
+  Collection dots view?
+\item
+  String change view?
+\end{itemize}
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+\begin{itemize}
+\tightlist
+\item
+  get feedback from 1-2 people?
+\item
+  Tried using it myself
+\end{itemize}
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+\hypertarget{future-work}{%
+\subsection*{Future work}\label{future-work}}
+\addcontentsline{toc}{subsection}{Future work}
+
+% Balancing columns in a ref list is a bit of a pain because you
+% either use a hack like flushend or balance, or manually insert
+% a column break.  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=balance
+% multicols doesn't work because we're already in two-column mode,
+% and flushend isn't awesome, so I choose balance.  See this
+% for more info: http://cs.brown.edu/system/software/latex/doc/balance.pdf
+%
+% Note that in a perfect world balance wants to be in the first
+% column of the last page.
+%
+% If balance doesn't work for you, you can remove that and
+% hard-code a column break into the bbl file right before you
+% submit:
+%
+% http://stackoverflow.com/questions/2149854/how-to-manually-equalize-columns-
+% in-an-ieee-paper-if-using-bibtex
+%
+% Or, just remove \balance and give up on balancing the last page.
+%
+\balance{}
+
+% \bibliographystyle{SIGCHI-Reference-Format}
+% \bibliography{sample}
+
+\printbibliography
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
