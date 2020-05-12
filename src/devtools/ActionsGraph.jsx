@@ -21,7 +21,7 @@ const actionNameToSymbol = (actionName) => {
   return symbols[actionName] || "?";
 }
 
-const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
+const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, currentStateId, resetToSelectedState, selectedStateId }) => {
 
   const xScale = d3.scaleBand()
                  .domain(data.map(d => d.stateId))
@@ -49,10 +49,16 @@ const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, cu
     }
   }
 
-  const selectionMarker = d3.line().curve(d3.curveLinear)([
+  const currentStateMarker = d3.line().curve(d3.curveLinear)([
       [xScale(currentStateId), yScale.range()[0]],
       [xScale(currentStateId), yScale.range()[1]],
     ])
+
+  const selectedStateMarker = d3.line().curve(d3.curveLinear)([
+      [xScale(selectedStateId), yScale.range()[0]],
+      [xScale(selectedStateId), yScale.range()[1]],
+    ])
+
 
   const bisect = d3.bisector(d => d.stateId).right;
 
@@ -62,7 +68,11 @@ const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, cu
   }
 
   const onClick = (e) => {
-    setSelectedStateId(getStateIdFromMouseEvent(e), currentStateId);
+    if (selectedStateId !== null) {
+      setSelectedStateId(null);
+    } else {
+      setSelectedStateId(getStateIdFromMouseEvent(e));
+    }
   }
 
   const onMouseMove = (e) => {
@@ -104,10 +114,19 @@ const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, cu
     </text>
   }
 
+  let selectionPin;
+  if (selectedStateId) {
+    selectionPin = <text
+      x={xScale(selectedStateId)}
+      y={-5}>📌</text>
+  }
+
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick} onMouseLeave={onMouseLeave}>
       { icons }
-      <Line path={selectionMarker} stroke='#ffcece' />
+      <Line path={currentStateMarker} stroke='#aaa' strokeDasharray={3} strokeWidth={1} />
+      { selectedStateId ? <Line path={selectedStateMarker} stroke='#ffcece' /> : null }
+      {selectionPin}
       {valueOverlay}
     </GraphContainer>
   </>

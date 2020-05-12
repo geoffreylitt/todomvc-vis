@@ -46,6 +46,7 @@ const Instructions = styled.div`
 
 const Visualizations = styled.div`
   grid-area: visualizations;
+  z-index: 10;
 `
 
 const State = styled.div`
@@ -181,6 +182,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 width={graphWidth}
                 height={graphHeight}
                 setSelectedStateId={setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight} />
@@ -196,6 +198,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 width={graphWidth}
                 height={graphHeight}
                 setSelectedStateId={setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
@@ -212,6 +215,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 width={graphWidth}
                 height={graphHeight}
                 setSelectedStateId={setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
@@ -228,6 +232,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 width={graphWidth}
                 height={graphHeight}
                 setSelectedStateId={setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
@@ -244,6 +249,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 width={graphWidth}
                 height={graphHeight}
                 setSelectedStateId={setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}

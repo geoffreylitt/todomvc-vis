@@ -5,7 +5,7 @@ import { clientPoint } from 'd3-selection';
 import Line from './Line';
 import GraphContainer from './GraphContainer'
 
-const LineGraph = ({ data, width, height, setSelectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
+const LineGraph = ({ data, width, height, setSelectedStateId, selectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
   // add another data point to line graph, to align with category graph
   // todo: think about a more robust way to do this... kinda hacky
   const lastDataPoint = data.slice(-1)[0];
@@ -28,9 +28,14 @@ const LineGraph = ({ data, width, height, setSelectedStateId, jumpToState, curre
       .x((d) => { return xScale(d.stateId); })
       .y((d) => { return yScale(d.value); });
 
-  const selectionMarker = d3.line().curve(d3.curveLinear)([
+  const currentStateMarker = d3.line().curve(d3.curveLinear)([
       [xScale(currentStateId), yScale.range()[0]],
       [xScale(currentStateId), yScale.range()[1]],
+    ])
+
+  const selectedStateMarker = d3.line().curve(d3.curveLinear)([
+      [xScale(selectedStateId), yScale.range()[0]],
+      [xScale(selectedStateId), yScale.range()[1]],
     ])
 
   const bisect = d3.bisector(d => d.stateId).right;
@@ -52,7 +57,11 @@ const LineGraph = ({ data, width, height, setSelectedStateId, jumpToState, curre
   }
 
   const onClick = (e) => {
-    setSelectedStateId(getStateIdFromMouseEvent(e), currentStateId);
+    if (selectedStateId !== null) {
+      setSelectedStateId(null);
+    } else {
+      setSelectedStateId(getStateIdFromMouseEvent(e));
+    }
   }
 
   const onMouseMove = (e) => {
@@ -86,7 +95,8 @@ const LineGraph = ({ data, width, height, setSelectedStateId, jumpToState, curre
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick} onMouseLeave={onMouseLeave}>
       <Line path={line(activeData)} stroke='#a6d2ff' />
       <Line path={line(inactiveData)} stroke="#eee" />
-      <Line path={selectionMarker} stroke='#ffcece' />
+      <Line path={currentStateMarker} stroke='#aaa' strokeDasharray={3} strokeWidth={1} />
+      { selectedStateId ? <Line path={selectedStateMarker} stroke='#ffcece' /> : null }
 
       {valueOverlay}
 

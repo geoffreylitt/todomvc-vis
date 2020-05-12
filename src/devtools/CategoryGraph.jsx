@@ -6,7 +6,7 @@ import uniq from 'lodash/uniq'
 import Line from './Line'
 import GraphContainer from './GraphContainer'
 
-const CategoryGraph = ({ data, width, height, setSelectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
+const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
 
   const paddingRight = 50;
 
@@ -49,7 +49,11 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, jumpToState, c
   }
 
   const onClick = (e) => {
-    setSelectedStateId(getStateIdFromMouseEvent(e), currentStateId);
+    if (selectedStateId !== null) {
+      setSelectedStateId(null);
+    } else {
+      setSelectedStateId(getStateIdFromMouseEvent(e));
+    }
   }
 
   const onMouseMove = (e) => {
