@@ -11,6 +11,12 @@ import { getVisibleTodos, getCompletedTodoCount } from '../selectors'
 const { reset, jumpToState } = ActionCreators;
 
 const Panel = styled.div`
+  display: grid;
+  grid-template-columns: 200px auto 250px;
+  grid-template-rows: auto;
+  grid-template-areas: "instructions visualizations state";
+  gap: 30px;
+
   padding: 20px;
   font-size: 14px;
   font-weight: normal;
@@ -27,6 +33,18 @@ const GraphLabel = styled.span`
 const GraphColumn = styled.div`
   display: inline-block;
   width: 430px;
+`
+
+const Instructions = styled.div`
+  grid-area: instructions;
+`
+
+const Visualizations = styled.div`
+  grid-area: visualizations;
+`
+
+const State = styled.div`
+  grid-area: state;
 `
 
 function reducer() {
@@ -86,85 +104,100 @@ export default class VisMonitor extends (PureComponent || Component) {
       value: state.state.visibilityFilter
     }))
 
+    const graphWidth = 200;
+    const graphHeight = 35;
+
     return (
       <Panel>
-        <h3 style={{marginTop: 0}}>6.894 FP Prototype, Geoffrey Litt <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/"><span style={{fontWeight: "normal"}}>(project background / description)</span></a></h3>
-{/*
-        <div>
-          Try it out: 1) do some things in the app, 2) hover on graphs below to navigate past states, 3) click in a graph to rewind the app state to a past version.
-        </div>*/}
+        <Instructions>
+          <h3 style={{marginTop: 0}}>6.894 FP Prototype, Geoffrey Litt</h3>
 
-        <div>Actions</div>
+          <p>
+            <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/">project background / description</a>
+          </p>
 
-        <ActionList
-          currentStateId={currentStateIndex}
-          stagedActionIds={stagedActionIds}
-          skippedActionIds={skippedActionIds}
-          actionsById={actionsById}
-          setSelectedStateId={this.setSelectedStateId}
-          selectedStateId={this.state.selectedStateId}
-          jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-          />
+         <p>
+           Try it out: 1) do some things in the app, 2) hover on graphs below to navigate past states, 3) click in a graph to rewind the app state to a past version.
+         </p>
 
-          <div>
-            <GraphLabel>state.todos.length</GraphLabel>
+        </Instructions>
 
-            {/* todo: could dynamically define the state -> value function? */}
-            <LineGraph
-              data={todosLength}
-              currentStateId={currentStateIndex}
-              width={150}
-              height={35}
-              setSelectedStateId={this.setSelectedStateId}
-              selectedStateId={this.state.selectedStateId}
-              jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-              />
-          </div>
+        <Visualizations>
 
-          <div>
-            <GraphLabel>visibleTodos.length</GraphLabel>
+          <ActionList
+            currentStateId={currentStateIndex}
+            stagedActionIds={stagedActionIds}
+            skippedActionIds={skippedActionIds}
+            actionsById={actionsById}
+            setSelectedStateId={this.setSelectedStateId}
+            selectedStateId={this.state.selectedStateId}
+            jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+            />
 
-            {/* todo: could dynamically define the state -> value function? */}
-            <LineGraph
-              data={visibleTodosLength}
-              currentStateId={currentStateIndex}
-              width={150}
-              height={35}
-              setSelectedStateId={this.setSelectedStateId}
-              selectedStateId={this.state.selectedStateId}
-              jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-              />
-          </div>
+            <div>
+              <GraphLabel>state.todos.length</GraphLabel>
 
-          <div>
-            <GraphLabel>completedTodosCount</GraphLabel>
+              {/* todo: could dynamically define the state -> value function? */}
+              <LineGraph
+                data={todosLength}
+                currentStateId={currentStateIndex}
+                width={graphWidth}
+                height={graphHeight}
+                setSelectedStateId={this.setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                />
+            </div>
 
-            {/* todo: could dynamically define the state -> value function? */}
-            <LineGraph
-              data={completedTodosCount}
-              currentStateId={currentStateIndex}
-              width={150}
-              height={35}
-              setSelectedStateId={this.setSelectedStateId}
-              selectedStateId={this.state.selectedStateId}
-              jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-              />
-          </div>
+            <div>
+              <GraphLabel>visibleTodos.length</GraphLabel>
 
-          <div>
-            <GraphLabel>visibilityFilter</GraphLabel>
+              {/* todo: could dynamically define the state -> value function? */}
+              <LineGraph
+                data={visibleTodosLength}
+                currentStateId={currentStateIndex}
+                width={graphWidth}
+                height={graphHeight}
+                setSelectedStateId={this.setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                />
+            </div>
 
-            {/* todo: could dynamically define the state -> value function? */}
-            <CategoryGraph
-              data={visibilityFilter}
-              currentStateId={currentStateIndex}
-              width={150}
-              height={35}
-              setSelectedStateId={this.setSelectedStateId}
-              selectedStateId={this.state.selectedStateId}
-              jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-              />
-          </div>
+            <div>
+              <GraphLabel>completedTodosCount</GraphLabel>
+
+              {/* todo: could dynamically define the state -> value function? */}
+              <LineGraph
+                data={completedTodosCount}
+                currentStateId={currentStateIndex}
+                width={graphWidth}
+                height={graphHeight}
+                setSelectedStateId={this.setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                />
+            </div>
+
+            <div>
+              <GraphLabel>visibilityFilter</GraphLabel>
+
+              {/* todo: could dynamically define the state -> value function? */}
+              <CategoryGraph
+                data={visibilityFilter}
+                currentStateId={currentStateIndex}
+                width={graphWidth}
+                height={graphHeight}
+                setSelectedStateId={this.setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                />
+            </div>
+          </Visualizations>
+
+          <State>
+            State viewer
+          </State>
       </Panel>
     );
   }
