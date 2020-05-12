@@ -82,4 +82,7 @@ Developed 3-4 sparkline style visualizations
 
 ## Future work
 
-
+* guided tour
+* screenshots?
+* learnability
+* dynamic queries
