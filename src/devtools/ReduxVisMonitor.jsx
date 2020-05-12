@@ -2,8 +2,8 @@ import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ActionCreators } from 'redux-devtools';
 import styled from 'styled-components'
-import ActionList from './ActionList'
 import LineGraph from './LineGraph'
+import ActionsGraph from './ActionsGraph'
 import CategoryGraph from './CategoryGraph'
 import mapValues from 'lodash/mapValues'
 import { getVisibleTodos, getCompletedTodoCount } from '../selectors'
@@ -81,7 +81,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
   render() {
     const {
-      currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds, dispatch
+      currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds, dispatch, stagedActions
     } = this.props;
 
     const todosLength = computedStates.map((state, index) => ({
@@ -104,6 +104,12 @@ export default class VisMonitor extends (PureComponent || Component) {
       value: state.state.visibilityFilter
     }))
 
+    const actionsForGraph = stagedActionIds.map(id => ({
+      stateId: id,
+      actionType: actionsById[id].action.type
+    }))
+
+
     const graphWidth = 200;
     const graphHeight = 35;
 
@@ -122,8 +128,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
         </Instructions>
 
-        <Visualizations>
-
+        <Visualizations>{/*
           <ActionList
             currentStateId={currentStateIndex}
             stagedActionIds={stagedActionIds}
@@ -132,7 +137,20 @@ export default class VisMonitor extends (PureComponent || Component) {
             setSelectedStateId={this.setSelectedStateId}
             selectedStateId={this.state.selectedStateId}
             jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-            />
+            />*/}
+
+            <div>
+              <GraphLabel>actions</GraphLabel>
+
+              <ActionsGraph
+                data={actionsForGraph}
+                currentStateId={currentStateIndex}
+                width={graphWidth}
+                height={graphHeight}
+                setSelectedStateId={this.setSelectedStateId}
+                selectedStateId={this.state.selectedStateId}
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))} />
+            </div>
 
             <div>
               <GraphLabel>state.todos.length</GraphLabel>
