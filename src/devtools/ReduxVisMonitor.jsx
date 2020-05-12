@@ -86,17 +86,22 @@ export default class VisMonitor extends (PureComponent || Component) {
   };
 
   state = {
-    selectedStateId: this.props.currentStateIndex
+    // start with no state selected (ie, we track current state)
+    selectedStateId: null
   };
-
-  setSelectedStateId = (stateId) => this.setState({ selectedStateId: stateId })
 
   render() {
     const {
       currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds, dispatch, stagedActions
     } = this.props;
 
-    const selectedState = computedStates[this.state.selectedStateId].state
+    // if the selected state is the most recent state,
+    // we increment it to match the current state.
+    // this way, by default, the selected state follows the
+    // current state, but if the user selects a past state,
+    // it doesn't follow current state.
+
+    const currentState = computedStates[currentStateIndex].state
 
     const todosLength = computedStates.map((state, index) => ({
       stateId: index,
@@ -123,6 +128,25 @@ export default class VisMonitor extends (PureComponent || Component) {
       value: actionsById[id].action.type
     }))
 
+    const resetToSelectedState = () => {
+      let stateIndexToJump;
+      // if no state is selected, jump to most recent state
+      if (this.state.selectedStateId === null) {
+        stateIndexToJump = computedStates.length - 1;
+      } else {
+        stateIndexToJump = this.state.selectedStateId;
+      }
+
+      dispatch(jumpToState(stateIndexToJump));
+    }
+
+    const setSelectedStateId = (stateId) => {
+      if (stateId !== computedStates.length - 1) {
+        this.setState({ selectedStateId: stateId })
+      } else {
+        this.setState({ selectedStateId: null })
+      }
+    }
 
     const graphWidth = 300;
     const graphHeight = 35;
@@ -156,9 +180,9 @@ export default class VisMonitor extends (PureComponent || Component) {
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
-                setSelectedStateId={this.setSelectedStateId}
-                selectedStateId={this.state.selectedStateId}
+                setSelectedStateId={setSelectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight} />
             </div>
 
@@ -171,9 +195,9 @@ export default class VisMonitor extends (PureComponent || Component) {
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
-                setSelectedStateId={this.setSelectedStateId}
-                selectedStateId={this.state.selectedStateId}
+                setSelectedStateId={setSelectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
                 />
             </div>
@@ -187,9 +211,9 @@ export default class VisMonitor extends (PureComponent || Component) {
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
-                setSelectedStateId={this.setSelectedStateId}
-                selectedStateId={this.state.selectedStateId}
+                setSelectedStateId={setSelectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
                 />
             </div>
@@ -203,9 +227,9 @@ export default class VisMonitor extends (PureComponent || Component) {
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
-                setSelectedStateId={this.setSelectedStateId}
-                selectedStateId={this.state.selectedStateId}
+                setSelectedStateId={setSelectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
                 />
             </div>
@@ -219,9 +243,9 @@ export default class VisMonitor extends (PureComponent || Component) {
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
-                setSelectedStateId={this.setSelectedStateId}
-                selectedStateId={this.state.selectedStateId}
+                setSelectedStateId={setSelectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                resetToSelectedState={resetToSelectedState}
                 paddingRight={paddingRight}
                 />
             </div>
@@ -229,7 +253,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
           <State>
             <PanelColumnLabel>App state</PanelColumnLabel>
-            <JSONTree data={selectedState} theme="monokai" />
+            <JSONTree data={currentState} theme="monokai" />
           </State>
       </Panel>
     );

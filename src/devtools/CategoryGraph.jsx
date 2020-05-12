@@ -6,7 +6,7 @@ import uniq from 'lodash/uniq'
 import Line from './Line'
 import GraphContainer from './GraphContainer'
 
-const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
+const CategoryGraph = ({ data, width, height, setSelectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
 
   const paddingRight = 50;
 
@@ -37,8 +37,8 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
   }
 
   const selectionMarker = d3.line().curve(d3.curveLinear)([
-      [xScale(selectedStateId), yScale.range()[0]],
-      [xScale(selectedStateId), yScale.range()[1]],
+      [xScale(currentStateId), yScale.range()[0]],
+      [xScale(currentStateId), yScale.range()[1]],
     ])
 
   const bisect = d3.bisector(d => d.stateId).right;
@@ -48,12 +48,16 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
     return xPosToValue(xPos);
   }
 
-  const onMouseMove = (e) => {
-    setSelectedStateId(getStateIdFromMouseEvent(e));
+  const onClick = (e) => {
+    setSelectedStateId(getStateIdFromMouseEvent(e), currentStateId);
   }
 
-  const onClick = (e) => {
+  const onMouseMove = (e) => {
     jumpToState(getStateIdFromMouseEvent(e));
+  }
+
+  const onMouseLeave = (e) => {
+    resetToSelectedState();
   }
 
   const rects = data.map(d => {
@@ -74,27 +78,27 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
   })
 
 
-  let selectedValue;
+  let currentValue;
 
-  if (selectedStateId && data.find(d => d.stateId === selectedStateId)) {
-    selectedValue = data.find(d => d.stateId === selectedStateId).value
+  if (currentStateId && data.find(d => d.stateId === currentStateId)) {
+    currentValue = data.find(d => d.stateId === currentStateId).value
   }
 
   let valueOverlay;
-  if (selectedValue !== undefined) {
+  if (currentValue !== undefined) {
     valueOverlay = <text
-          x={xScale(selectedStateId) + 5}
+          x={xScale(currentStateId) + 5}
           y={12}
           height={10}
           width={50}
           fill="#999"
           fontSize="12px">
-          {selectedValue}
+          {currentValue}
         </text>
   }
 
   return <>
-    <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
+    <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick} onMouseLeave={onMouseLeave}>
       { rects }
       <Line path={selectionMarker} stroke='#ffcece' />
       {valueOverlay}
