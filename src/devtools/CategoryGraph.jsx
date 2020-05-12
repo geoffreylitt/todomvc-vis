@@ -20,7 +20,7 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
                 .range([height - 1, 1])
                 .padding(0.1);
 
-  const activeColor = d3.scaleOrdinal()
+  const color = d3.scaleOrdinal()
                 .domain(uniq(data.map(d => d.value)))
                 .range(d3.schemePastel1)
 
@@ -49,10 +49,12 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
   }
 
   const onClick = (e) => {
-    if (selectedStateId !== null) {
+    const clickedStateId = getStateIdFromMouseEvent(e);
+    if (clickedStateId === selectedStateId) {
+      // unpin
       setSelectedStateId(null);
     } else {
-      setSelectedStateId(getStateIdFromMouseEvent(e));
+      setSelectedStateId(clickedStateId);
     }
   }
 
@@ -65,15 +67,9 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
   }
 
   const rects = data.map(d => {
-    let color;
-    if (currentStateId >= d.stateId) {
-      color = activeColor(d.value);
-    } else {
-      color = "#eee";
-    }
     return <rect
       key={d.stateId}
-      fill={color}
+      fill={color(d.value)}
       x={xScale(d.stateId)}
       y={yScale(d.value)}
       height={yScale.bandwidth()}

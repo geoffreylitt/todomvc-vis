@@ -68,10 +68,12 @@ const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, cu
   }
 
   const onClick = (e) => {
-    if (selectedStateId !== null) {
+    const clickedStateId = getStateIdFromMouseEvent(e);
+    if (clickedStateId === selectedStateId) {
+      // unpin
       setSelectedStateId(null);
     } else {
-      setSelectedStateId(getStateIdFromMouseEvent(e));
+      setSelectedStateId(clickedStateId);
     }
   }
 

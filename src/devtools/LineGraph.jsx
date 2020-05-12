@@ -11,9 +11,6 @@ const LineGraph = ({ data, width, height, setSelectedStateId, selectedStateId, j
   const lastDataPoint = data.slice(-1)[0];
   let graphData = data.concat([{ stateId: lastDataPoint.stateId + 1, value: lastDataPoint.value }])
 
-  let activeData = graphData.filter(d => d.stateId <= currentStateId)
-  const inactiveData = graphData.filter(d => d.stateId >= currentStateId)
-
   const xScale = d3.scaleLinear()
                  .domain(d3.extent(graphData, d => d.stateId))
                  .range([1, width - 1]);
@@ -57,10 +54,12 @@ const LineGraph = ({ data, width, height, setSelectedStateId, selectedStateId, j
   }
 
   const onClick = (e) => {
-    if (selectedStateId !== null) {
+    const clickedStateId = getStateIdFromMouseEvent(e);
+    if (clickedStateId === selectedStateId) {
+      // unpin
       setSelectedStateId(null);
     } else {
-      setSelectedStateId(getStateIdFromMouseEvent(e));
+      setSelectedStateId(clickedStateId);
     }
   }
 
@@ -93,8 +92,7 @@ const LineGraph = ({ data, width, height, setSelectedStateId, selectedStateId, j
 
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick} onMouseLeave={onMouseLeave}>
-      <Line path={line(activeData)} stroke='#a6d2ff' />
-      <Line path={line(inactiveData)} stroke="#eee" />
+      <Line path={line(graphData)} stroke='#a6d2ff' />
       <Line path={currentStateMarker} stroke='#aaa' strokeDasharray={3} strokeWidth={1} />
       { selectedStateId ? <Line path={selectedStateMarker} stroke='#ffcece' /> : null }
 
