@@ -13,7 +13,7 @@ const { reset, jumpToState } = ActionCreators;
 
 const Panel = styled.div`
   display: grid;
-  grid-template-columns: 200px auto 250px;
+  grid-template-columns: 150px auto 250px;
   grid-template-rows: auto;
   grid-template-areas: "instructions visualizations state";
   gap: 30px;
@@ -27,7 +27,7 @@ const Panel = styled.div`
 const GraphLabel = styled.div`
   margin-right: 10px;
   display: inline-block;
-  width: 120px;
+  width: 100px;
   text-align: right;
   vertical-align: top;
   padding-top: 9px;
@@ -124,7 +124,7 @@ export default class VisMonitor extends (PureComponent || Component) {
     }))
 
 
-    const graphWidth = 220;
+    const graphWidth = 300;
     const graphHeight = 35;
 
     return (

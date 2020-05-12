@@ -10,10 +10,11 @@ const GraphContainer = styled.svg`
   margin-right: 10px;
 `
 
-const CurrentValue = styled.div`
-  display: inline-block;
-  color: #aaa;
-`
+const CurrentValue = () => {
+
+}
+
+
 
 const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
   // add another data point to line graph, to align with category graph
@@ -75,15 +76,26 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
     selectedValue = graphData.find(d => d.stateId === selectedStateId).value
   }
 
+  let valueOverlay;
+  if (selectedValue) {
+    valueOverlay =
+      <g transform={`translate(${xScale(selectedStateId) + 10},25)`} >
+        <rect color="black" opacity="0.05" height={30} width={30} x={-10} y={-23} />
+        <text height={10} width={50}>{selectedValue}</text>
+      </g>
+  }
+
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
       <Line path={line(activeData)} stroke='#a6d2ff' />
       <Line path={line(inactiveData)} stroke="#eee" />
       <Line path={selectionMarker} stroke='#ffcece' />
 
+      {valueOverlay}
+
     </GraphContainer>
 
-    { (selectedValue !== undefined) ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
+
   </>
 }
 
