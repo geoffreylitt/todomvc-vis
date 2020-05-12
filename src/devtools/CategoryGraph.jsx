@@ -4,18 +4,11 @@ import * as d3 from 'd3';
 import { clientPoint } from 'd3-selection';
 import uniq from 'lodash/uniq'
 import Line from './Line'
-
-const GraphContainer = styled.svg`
-  border: solid thin #eee;
-  cursor: pointer;
-`
-
-const CurrentValue = styled.div`
-  display: inline-block;
-  color: #aaa;
-`
+import GraphContainer from './GraphContainer'
 
 const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
+
+  const paddingRight = 50;
 
   const xScale = d3.scaleBand()
                  .domain(data.map(d => d.stateId))
@@ -90,12 +83,14 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
   let valueOverlay;
   if (selectedValue !== undefined) {
     valueOverlay = <text
-      x={xScale(selectedStateId) + 5}
-      y={25}
-      height={10}
-      width={50}>
-      {selectedValue}
-    </text>
+          x={xScale(selectedStateId) + 5}
+          y={12}
+          height={10}
+          width={50}
+          fill="#999"
+          fontSize="12px">
+          {selectedValue}
+        </text>
   }
 
   return <>

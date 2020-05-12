@@ -126,6 +126,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
     const graphWidth = 300;
     const graphHeight = 35;
+    const paddingRight = 50;
 
     return (
       <Panel>
@@ -157,7 +158,8 @@ export default class VisMonitor extends (PureComponent || Component) {
                 height={graphHeight}
                 setSelectedStateId={this.setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
-                jumpToState={(stateId) => dispatch(jumpToState(stateId))} />
+                jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                paddingRight={paddingRight} />
             </div>
 
             <div>
@@ -172,6 +174,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 setSelectedStateId={this.setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                paddingRight={paddingRight}
                 />
             </div>
 
@@ -187,6 +190,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 setSelectedStateId={this.setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                paddingRight={paddingRight}
                 />
             </div>
 
@@ -202,6 +206,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 setSelectedStateId={this.setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                paddingRight={paddingRight}
                 />
             </div>
 
@@ -217,6 +222,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 setSelectedStateId={this.setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
+                paddingRight={paddingRight}
                 />
             </div>
           </Visualizations>

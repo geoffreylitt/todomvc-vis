@@ -4,16 +4,7 @@ import * as d3 from 'd3';
 import { clientPoint } from 'd3-selection';
 import uniq from 'lodash/uniq'
 import Line from './Line'
-
-const GraphContainer = styled.svg`
-  border: solid thin #eee;
-  cursor: pointer;
-`
-
-const CurrentValue = styled.div`
-  display: inline-block;
-  color: #aaa;
-`
+import GraphContainer from './GraphContainer'
 
 const actionNameToSymbol = (actionName) => {
   const symbols = {
@@ -78,10 +69,10 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
     jumpToState(getStateIdFromMouseEvent(e));
   }
 
-  const rects = data.map(d =>
+  const icons = data.map(d =>
     <text
       key={d.stateId}
-      x={xScale(d.stateId)}
+      x={xScale(d.stateId) - 7}
       y={25}
       height={10}
       width={xScale.bandwidth()}>
@@ -100,16 +91,18 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
   if (selectedValue !== undefined) {
     valueOverlay = <text
       x={xScale(selectedStateId) + 5}
-      y={25}
+      y={12}
       height={10}
-      width={50}>
+      width={50}
+      fill="#999"
+      fontSize="12px">
       {selectedValue}
     </text>
   }
 
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
-      { rects }
+      { icons }
       <Line path={selectionMarker} stroke='#ffcece' />
       {valueOverlay}
     </GraphContainer>

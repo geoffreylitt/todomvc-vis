@@ -3,18 +3,7 @@ import styled from 'styled-components'
 import * as d3 from 'd3';
 import { clientPoint } from 'd3-selection';
 import Line from './Line';
-
-const GraphContainer = styled.svg`
-  border: solid thin #eee;
-  cursor: pointer;
-  margin-right: 10px;
-`
-
-const CurrentValue = () => {
-
-}
-
-
+import GraphContainer from './GraphContainer'
 
 const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, jumpToState, currentStateId }) => {
   // add another data point to line graph, to align with category graph
@@ -79,12 +68,14 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
   let valueOverlay;
   if (selectedValue !== undefined) {
     valueOverlay = <text
-      x={xScale(selectedStateId) + 5}
-      y={25}
-      height={10}
-      width={50}>
-      {selectedValue}
-    </text>
+          x={xScale(selectedStateId) + 5}
+          y={12}
+          height={10}
+          width={50}
+          fill="#999"
+          fontSize="12px">
+          {selectedValue}
+        </text>
   }
 
   return <>
