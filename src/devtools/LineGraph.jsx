@@ -78,11 +78,13 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
 
   let valueOverlay;
   if (selectedValue) {
-    valueOverlay =
-      <g transform={`translate(${xScale(selectedStateId) + 10},25)`} >
-        <rect color="black" opacity="0.05" height={30} width={30} x={-10} y={-23} />
-        <text height={10} width={50}>{selectedValue}</text>
-      </g>
+    valueOverlay = <text
+      x={xScale(selectedStateId) + 5}
+      y={25}
+      height={10}
+      width={50}>
+      {selectedValue}
+    </text>
   }
 
   return <>
