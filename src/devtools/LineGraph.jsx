@@ -77,7 +77,7 @@ const LineGraph = ({ data, width, height, selectedStateId, setSelectedStateId, j
   }
 
   let valueOverlay;
-  if (selectedValue) {
+  if (selectedValue !== undefined) {
     valueOverlay = <text
       x={xScale(selectedStateId) + 5}
       y={25}

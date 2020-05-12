@@ -120,7 +120,7 @@ export default class VisMonitor extends (PureComponent || Component) {
 
     const actionsForGraph = stagedActionIds.map(id => ({
       stateId: id,
-      actionType: actionsById[id].action.type
+      value: actionsById[id].action.type
     }))
 
 

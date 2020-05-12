@@ -85,7 +85,7 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
       y={25}
       height={10}
       width={xScale.bandwidth()}>
-      {actionNameToSymbol(d.actionType)}
+      {actionNameToSymbol(d.value)}
     </text>
   )
 
@@ -96,12 +96,23 @@ const CategoryGraph = ({ data, width, height, selectedStateId, setSelectedStateI
     selectedValue = data.find(d => d.stateId === selectedStateId).value
   }
 
+  let valueOverlay;
+  if (selectedValue !== undefined) {
+    valueOverlay = <text
+      x={xScale(selectedStateId) + 5}
+      y={25}
+      height={10}
+      width={50}>
+      {selectedValue}
+    </text>
+  }
+
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick}>
       { rects }
       <Line path={selectionMarker} stroke='#ffcece' />
+      {valueOverlay}
     </GraphContainer>
-    { selectedValue ? <CurrentValue>{selectedValue}</CurrentValue> : "" }
   </>
 }
 
