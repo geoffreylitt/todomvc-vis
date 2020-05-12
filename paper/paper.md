@@ -82,6 +82,7 @@ Developed 3-4 sparkline style visualizations
 
 ## Future work
 
+* add vis into the body of the page
 * guided tour
 * screenshots?
 * learnability
