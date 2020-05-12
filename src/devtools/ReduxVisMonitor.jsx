@@ -116,7 +116,9 @@ export default class VisMonitor extends (PureComponent || Component) {
     return (
       <Panel>
         <Instructions>
-          <h3 style={{marginTop: 0}}>6.894 FP Prototype, Geoffrey Litt</h3>
+          <h3 style={{marginTop: 0}}>MVU Visualizer</h3>
+
+          <p>Geoffrey Litt, 6.894 Final Project</p>
 
           <p>
             <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/">project background / description</a>
