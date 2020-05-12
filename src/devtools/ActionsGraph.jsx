@@ -17,7 +17,7 @@ const CurrentValue = styled.div`
 
 const actionNameToSymbol = (actionName) => {
   const symbols = {
-    "@@INIT": "🛫",
+    "@@INIT": "⏯",
     "ADD_TODO": "➕",
     "SET_VISIBILITY_FILTER": "🔍",
     "EDIT_TODO": "✏️",

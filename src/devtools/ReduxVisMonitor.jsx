@@ -7,6 +7,7 @@ import ActionsGraph from './ActionsGraph'
 import CategoryGraph from './CategoryGraph'
 import mapValues from 'lodash/mapValues'
 import { getVisibleTodos, getCompletedTodoCount } from '../selectors'
+import JSONTree from 'react-json-tree'
 
 const { reset, jumpToState } = ActionCreators;
 
@@ -22,12 +23,16 @@ const Panel = styled.div`
   font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
-const GraphLabel = styled.span`
-  font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-  font-weight: 700;
+
+const GraphLabel = styled.div`
   margin-right: 10px;
   display: inline-block;
-  width: 160px;
+  width: 120px;
+  text-align: right;
+  vertical-align: top;
+  padding-top: 9px;
+  font-size: 12px;
+  color: #5d7395;
 `
 
 const GraphColumn = styled.div`
@@ -45,6 +50,13 @@ const Visualizations = styled.div`
 
 const State = styled.div`
   grid-area: state;
+`
+
+const PanelColumnLabel = styled.div`
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #aaa;
+  font-size: 12px;
 `
 
 function reducer() {
@@ -84,6 +96,8 @@ export default class VisMonitor extends (PureComponent || Component) {
       currentStateIndex, computedStates, actionsById, stagedActionIds, skippedActionIds, dispatch, stagedActions
     } = this.props;
 
+    const selectedState = computedStates[this.state.selectedStateId].state
+
     const todosLength = computedStates.map((state, index) => ({
       stateId: index,
       value: state.state.todos.length
@@ -110,7 +124,7 @@ export default class VisMonitor extends (PureComponent || Component) {
     }))
 
 
-    const graphWidth = 200;
+    const graphWidth = 220;
     const graphHeight = 35;
 
     return (
@@ -130,16 +144,8 @@ export default class VisMonitor extends (PureComponent || Component) {
 
         </Instructions>
 
-        <Visualizations>{/*
-          <ActionList
-            currentStateId={currentStateIndex}
-            stagedActionIds={stagedActionIds}
-            skippedActionIds={skippedActionIds}
-            actionsById={actionsById}
-            setSelectedStateId={this.setSelectedStateId}
-            selectedStateId={this.state.selectedStateId}
-            jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-            />*/}
+        <Visualizations>
+          <PanelColumnLabel>Timeline</PanelColumnLabel>
 
             <div>
               <GraphLabel>actions</GraphLabel>
@@ -155,7 +161,7 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel>state.todos.length</GraphLabel>
+              <GraphLabel># todos</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
               <LineGraph
@@ -170,7 +176,7 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel>visibleTodos.length</GraphLabel>
+              <GraphLabel># visible</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
               <LineGraph
@@ -185,7 +191,7 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel>completedTodosCount</GraphLabel>
+              <GraphLabel># completed</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
               <LineGraph
@@ -216,7 +222,8 @@ export default class VisMonitor extends (PureComponent || Component) {
           </Visualizations>
 
           <State>
-            State viewer
+            <PanelColumnLabel>App state</PanelColumnLabel>
+            <JSONTree data={selectedState} theme="monokai" />
           </State>
       </Panel>
     );
