@@ -12,10 +12,6 @@ In this work, I present an approach to visualizing the behavior of user interfac
 
 ![timeline screenshot](timeline.png)
 
-## Video demo
-
-<iframe width="640" height="480" src="https://www.loom.com/embed/e5df0b7ba47240e3ac9f5ceb9316ec53" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
 ## Development
 
 To run locally:
