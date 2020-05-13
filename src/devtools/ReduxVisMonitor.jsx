@@ -126,6 +126,11 @@ export default class VisMonitor extends (PureComponent || Component) {
       value: state.state.todos
     }))
 
+    const visibleTodos = computedStates.map((state, index) => ({
+      stateId: index,
+      value: getVisibleTodos(state.state)
+    }))
+
     const visibilityFilter = computedStates.map((state, index) => ({
       stateId: index,
       value: state.state.visibilityFilter,
@@ -204,11 +209,11 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel># todos</GraphLabel>
+              <GraphLabel>todos</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
-              <LineGraph
-                data={todosLength}
+              <CollectionGraph
+                data={todos}
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
@@ -220,11 +225,10 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel># visible</GraphLabel>
+              <GraphLabel>visible</GraphLabel>
 
-              {/* todo: could dynamically define the state -> value function? */}
-              <LineGraph
-                data={visibleTodosLength}
+              <CollectionGraph
+                data={visibleTodos}
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
@@ -239,8 +243,8 @@ export default class VisMonitor extends (PureComponent || Component) {
               <GraphLabel># completed</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
-              <CollectionGraph
-                data={todos}
+              <LineGraph
+                data={completedTodosCount}
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}

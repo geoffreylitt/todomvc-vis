@@ -5,10 +5,11 @@ import { clientPoint } from 'd3-selection';
 import uniq from 'lodash/uniq'
 import Line from './Line'
 import GraphContainer from './GraphContainer'
+import Color from 'color'
 
 const color = d3.scaleOrdinal()
               .domain([])
-              .range(d3.schemePastel1)
+              .range(["#fbb4ae", "#ccebc5"])
 
 const CollectionGraph = ({ data, width, height, setSelectedStateId, selectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
 
@@ -74,13 +75,16 @@ const CollectionGraph = ({ data, width, height, setSelectedStateId, selectedStat
     return d.value.map((todo, index) => {
       const column = Math.floor(index / 5);
       const row = index % 5;
+      const circleColor = color(todo.completed);
+
       return <circle
         key={`${d.stateId}:${todo.id}`}
-        fill={color(todo.id)}
-        stroke="#999"
+        fill={circleColor}
+        stroke={Color(circleColor).desaturate(0.5).darken(0.5)}
+        strokeWidth={1}
         cx={xScale(d.stateId) + (column * 5)}
         cy={4 + (row * 7) + (column * 4)}
-        r={4}
+        r={3}
        />
     })
   })
