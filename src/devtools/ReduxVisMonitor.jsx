@@ -225,7 +225,7 @@ export default class VisMonitor extends (PureComponent || Component) {
             </div>
 
             <div>
-              <GraphLabel>visible</GraphLabel>
+              <GraphLabel>visible todos</GraphLabel>
 
               <CollectionGraph
                 data={visibleTodos}
