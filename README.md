@@ -2,15 +2,19 @@
 
 By Geoffrey Litt, glitt@mit.edu
 
+* [📹 Video demo](https://www.loom.com/share/e5df0b7ba47240e3ac9f5ceb9316ec53)
 * [📄 Final Paper](https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/raw/master/paper/paper.pdf)
 * [⏯ Live Prototype](https://github.mit.edu/pages/6894-sp20/FP-Program-Execution-Visualization/)
-* [📹 Milestone video demo](https://www.loom.com/share/164ad22b95554784bf06919781ec3fe5)
 
 Visualizing the runtime behavior of programs can help programmers with targeted debugging and general understanding. For understanding complex programs, visualizations abstracted from the low-level code are most helpful, but this introduces new challenges: how does the programmer specify what to visualize, and how do we visualize complex data structures which aren't just primitive values?
 
 In this work, I present an approach to visualizing the behavior of user interfaces built with the Model-View-Update pattern. I present a prototype runtime visualization system built on the Redux library and argue that, by exploiting the natural abstraction characteristics of this application architecture, we can create useful runtime visualizations with minimal programmer effort.
 
 ![timeline screenshot](timeline.png)
+
+## Video demo
+
+<iframe width="640" height="480" src="https://www.loom.com/embed/e5df0b7ba47240e3ac9f5ceb9316ec53" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Development
 
