@@ -8,6 +8,7 @@ import CategoryGraph from './CategoryGraph'
 import mapValues from 'lodash/mapValues'
 import { getVisibleTodos, getCompletedTodoCount } from '../selectors'
 import JSONTree from 'react-json-tree'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
 
 const { reset, jumpToState } = ActionCreators;
 
@@ -121,7 +122,12 @@ export default class VisMonitor extends (PureComponent || Component) {
 
     const visibilityFilter = computedStates.map((state, index) => ({
       stateId: index,
-      value: state.state.visibilityFilter
+      value: state.state.visibilityFilter,
+      enumValues: [
+        SHOW_ALL,
+        SHOW_COMPLETED,
+        SHOW_ACTIVE
+      ]
     }))
 
     const actionsForGraph = stagedActionIds.map(id => ({

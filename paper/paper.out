@@ -1,6 +1,11 @@
-\BOOKMARK [1][-]{section.5}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.7}{Related Work}{}% 2
-\BOOKMARK [2][-]{subsection.9}{Methods}{section.7}% 3
-\BOOKMARK [2][-]{subsection.11}{Results}{section.7}% 4
-\BOOKMARK [2][-]{subsection.13}{Discussion}{section.7}% 5
-\BOOKMARK [2][-]{subsection.15}{Future work}{section.7}% 6
+\BOOKMARK [1][-]{section.4}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.6}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.8}{Visualization design}{}% 3
+\BOOKMARK [2][-]{subsection.10}{Use cases}{section.8}% 4
+\BOOKMARK [2][-]{subsection.12}{Data structures}{section.8}% 5
+\BOOKMARK [1][-]{section.14}{Visualization Design}{}% 6
+\BOOKMARK [2][-]{subsection.16}{Context: TodoMVC}{section.14}% 7
+\BOOKMARK [2][-]{subsection.19}{Overall layout}{section.14}% 8
+\BOOKMARK [2][-]{subsection.23}{Visualization Types}{section.14}% 9
+\BOOKMARK [2][-]{subsection.25}{Prototype Implementation}{section.14}% 10
+\BOOKMARK [2][-]{subsection.27}{Discussion and Future Work}{section.14}% 11

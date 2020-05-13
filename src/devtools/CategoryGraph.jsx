@@ -16,7 +16,7 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
                  .padding(0.1);
 
   const yScale = d3.scaleBand()
-                .domain(uniq(data.map(d => d.value)))
+                .domain(data[0]["enumValues"])
                 .range([height - 1, 1])
                 .padding(0.1);
 

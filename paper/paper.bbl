@@ -154,6 +154,60 @@
       \endverb
       \keyw{Computer Science - Programming Languages}
     \endentry
+    \entry{guo2013}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=1fc5e97868fb534d658782397c022852}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Philip\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Denver, Colorado, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{1fc5e97868fb534d658782397c022852}
+      \strng{fullhash}{1fc5e97868fb534d658782397c022852}
+      \strng{bibnamehash}{1fc5e97868fb534d658782397c022852}
+      \strng{authorbibnamehash}{1fc5e97868fb534d658782397c022852}
+      \strng{authornamehash}{1fc5e97868fb534d658782397c022852}
+      \strng{authorfullhash}{1fc5e97868fb534d658782397c022852}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This paper presents Online Python Tutor, a web-based program visualization tool for Python, which is becoming a popular language for teaching introductory CS courses. Using this tool, teachers and students can write Python programs directly in the web browser (without installing any plugins), step forwards and backwards through execution to view the run-time state of data structures, and share their program visualizations on the web. In the past three years, over 200,000 people have used Online Python Tutor to visualize their programs. In addition, instructors in a dozen universities such as UC Berkeley, MIT, the University of Washington, and the University of Waterloo have used it in their CS1 courses. Finally, Online Python Tutor visualizations have been embedded within three web-based digital Python textbook projects, which collectively attract around 16,000 viewers per month and are being used in at least 25 universities. Online Python Tutor is free and open source software, available at pythontutor.com.}
+      \field{booktitle}{Proceeding of the 44th {{ACM}} Technical Symposium on {{Computer}} Science Education}
+      \field{day}{6}
+      \field{isbn}{978-1-4503-1868-6}
+      \field{month}{3}
+      \field{series}{{{SIGCSE}} '13}
+      \field{shorttitle}{Online Python Tutor}
+      \field{title}{Online Python Tutor: Embeddable Web-Based Program Visualization for Cs Education}
+      \field{urlday}{12}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{579\bibrangedash 584}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/2445196.2445368
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/N52WHB3D/Guo - 2013 - Online python tutor embeddable web-based program .pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.org/10.1145/2445196.2445368
+      \endverb
+      \verb{url}
+      \verb http://doi.org/10.1145/2445196.2445368
+      \endverb
+      \keyw{CS1,program visualization,python}
+    \endentry
     \entry{hoffswell2018a}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=2b31879f013ece5a9e1cc879ce96f73a}{%
@@ -277,6 +331,47 @@
       \endverb
       \keyw{program visualization}
     \endentry
+    \entry{kasibatla2018}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=59713a1ab25323e5328a52586ad849e7}{%
+           family={Kasibatla},
+           familyi={K\bibinitperiod},
+           given={Saketh\bibnamedelima Ram},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {UCLA}%
+      }
+      \strng{namehash}{59713a1ab25323e5328a52586ad849e7}
+      \strng{fullhash}{59713a1ab25323e5328a52586ad849e7}
+      \strng{bibnamehash}{59713a1ab25323e5328a52586ad849e7}
+      \strng{authorbibnamehash}{59713a1ab25323e5328a52586ad849e7}
+      \strng{authornamehash}{59713a1ab25323e5328a52586ad849e7}
+      \strng{authorfullhash}{59713a1ab25323e5328a52586ad849e7}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{A programming environment that visualizes a program’s execution can help users better understand their programs. However, building such an environment for programmers at large is difficult, as it is not clear how to effectively visualize large, complex programs. We would like to make progress on this problem by first focusing on a subproblem: creating a better programming experience for learning and teaching programming. To explore this approach, we built Seymour, a prototype live programming environment that visualizes all events in a program’s execution. Seymour features two complementary visualizations—one that shows a detailed view of a method call, and another that depicts the whole execution at a high level. These two visualizations come together to create a compelling user experience that we plan to test and improve with student feedback}
+      \field{langid}{english}
+      \field{shorttitle}{Seymour}
+      \field{title}{Seymour: {{A Live Programming Environment}} for the {{Classroom}}}
+      \field{urlday}{13}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/C4HAJB3I/Kasibatla - 2018 - Seymour A Live Programming Environment for the Cl.pdf;/Users/geoffreylitt/Zotero/storage/IX5Z2NLB/8gx5x6kj.html
+      \endverb
+      \verb{urlraw}
+      \verb https://escholarship.org/uc/item/8gx5x6kj
+      \endverb
+      \verb{url}
+      \verb https://escholarship.org/uc/item/8gx5x6kj
+      \endverb
+    \endentry
     \entry{ko2004}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=1d34de1e022585975bb72dede5d077e0}{%
@@ -366,178 +461,6 @@
       \verb 10.1145/3313831.3376494
       \endverb
     \endentry
-    \entry{lieber2014}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=466a9bc23fe3d89a153e4b1c656c6910}{%
-           family={Lieber},
-           familyi={L\bibinitperiod},
-           given={Tom},
-           giveni={T\bibinitperiod}}}%
-        {{hash=4e37d0527816c22a15c0f4a05126a3e3}{%
-           family={Brandt},
-           familyi={B\bibinitperiod},
-           given={Joel\bibnamedelima R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=121343d23d64b3354929983e3e446ef3}{%
-           family={Miller},
-           familyi={M\bibinitperiod},
-           given={Rob\bibnamedelima C.},
-           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Toronto, Ontario, Canada}%
-      }
-      \list{publisher}{1}{%
-        {ACM Press}%
-      }
-      \strng{namehash}{72ef183ee88099bf873395d1a562269f}
-      \strng{fullhash}{72ef183ee88099bf873395d1a562269f}
-      \strng{bibnamehash}{72ef183ee88099bf873395d1a562269f}
-      \strng{authorbibnamehash}{72ef183ee88099bf873395d1a562269f}
-      \strng{authornamehash}{72ef183ee88099bf873395d1a562269f}
-      \strng{authorfullhash}{72ef183ee88099bf873395d1a562269f}
-      \field{sortinit}{L}
-      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{We present Theseus, an IDE extension that visualizes run­ time behavior within a JavaScript code editor. By displaying real-time information about how code actually behaves dur­ ing execution, Theseus proactively addresses misconceptions by drawing attention to similarities and differences between the programmer’s idea of what code does and what it actu­ ally does. To understand how programmers would respond to this kind of an always-on visualization, we ran a lab study with graduate students, and interviewed 9 professional pro­ grammers who were asked to use Theseus in their day-to-day work. We found that users quickly adopted strategies that are unique to always-on, real-time visualizations, and used the additional information to guide their navigation through their code.}
-      \field{booktitle}{Proceedings of the 32nd Annual {{ACM}} Conference on {{Human}} Factors in Computing Systems - {{CHI}} '14}
-      \field{eventtitle}{The 32nd Annual {{ACM}} Conference}
-      \field{isbn}{978-1-4503-2473-1}
-      \field{langid}{english}
-      \field{title}{Addressing Misconceptions about Code with Always-on Programming Visualizations}
-      \field{urlday}{11}
-      \field{urlmonth}{5}
-      \field{urlyear}{2020}
-      \field{year}{2014}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{2481\bibrangedash 2490}
-      \range{pages}{10}
-      \verb{doi}
-      \verb 10.1145/2556288.2557409
-      \endverb
-      \verb{file}
-      \verb /Users/geoffreylitt/Zotero/storage/44LDG267/Lieber et al. - 2014 - Addressing misconceptions about code with always-o.pdf
-      \endverb
-      \verb{urlraw}
-      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
-      \endverb
-      \verb{url}
-      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
-      \endverb
-    \endentry
-    \entry{meyer2006}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=77204ef7a14a221ea8f3278cd0d02beb}{%
-           family={Meyer},
-           familyi={M\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=56813febf118f09066b46910a9c468f9}{%
-           family={Gîrba},
-           familyi={G\bibinitperiod},
-           given={Tudor},
-           giveni={T\bibinitperiod}}}%
-        {{hash=66f03c40dd11433f8b22403365dc3d60}{%
-           family={Lungu},
-           familyi={L\bibinitperiod},
-           given={Mircea},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Brighton, United Kingdom}%
-      }
-      \list{publisher}{1}{%
-        {ACM Press}%
-      }
-      \strng{namehash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \strng{fullhash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \strng{bibnamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \strng{authorbibnamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \strng{authornamehash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \strng{authorfullhash}{a702bc76d1e255362f22f86b4e1a4b4d}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{abstract}{Data visualization is the process of representing data as pictures to support reasoning about the underlying data. For the interpretation to be as easy as possible, we need to be as close as possible to the original data. As most visualization tools have an internal metamodel, which is different from the one for the presented data, they usually need to duplicate the original data to conform to their metamodel. This leads to an increase in the resources needed, increase which is not always justified. In this work we argue for the need of having an engine that is as close as possible to the data and we present our solution of moving the visualization tool to the data, instead of moving the data to the visualization tool. Our solution also emphasizes the necessity of reusing basic blocks to express complex visualizations and allowing the programmer to script the visualization using his preferred tools, rather than a third party format. As a validation of the expressiveness of our framework, we show how we express several already published visualizations and describe the pros and cons of the approach.}
-      \field{booktitle}{Proceedings of the 2006 {{ACM}} Symposium on {{Software}} Visualization - {{SoftVis}} '06}
-      \field{eventtitle}{The 2006 {{ACM}} Symposium}
-      \field{isbn}{978-1-59593-464-2}
-      \field{langid}{english}
-      \field{shorttitle}{Mondrian}
-      \field{title}{Mondrian: An Agile Information Visualization Framework}
-      \field{urlday}{11}
-      \field{urlmonth}{5}
-      \field{urlyear}{2020}
-      \field{year}{2006}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{135}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1145/1148493.1148513
-      \endverb
-      \verb{file}
-      \verb /Users/geoffreylitt/Zotero/storage/SPYK98W2/Meyer et al. - 2006 - Mondrian an agile information visualization frame.pdf
-      \endverb
-      \verb{urlraw}
-      \verb http://portal.acm.org/citation.cfm?doid=1148493.1148513
-      \endverb
-      \verb{url}
-      \verb http://portal.acm.org/citation.cfm?doid=1148493.1148513
-      \endverb
-    \endentry
-    \entry{myers1990}{article}{}
-      \name{author}{1}{}{%
-        {{hash=7f3139b9d8c689d2ae47ba9be98a69f0}{%
-           family={Myers},
-           familyi={M\bibinitperiod},
-           given={Brad\bibnamedelima A.},
-           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \strng{namehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \strng{fullhash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \strng{bibnamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \strng{authorbibnamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \strng{authornamehash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \strng{authorfullhash}{7f3139b9d8c689d2ae47ba9be98a69f0}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{There has been a great interest recently in systems that use graphics to aid in the programming, debugging, and understanding of computer systems. The terms ‘‘Visual Programming’’ and ‘‘Program Visualization’’ have been applied to these systems. This paper attempts to provide more meaning to these terms by giving precise definitions, and then surveys a number of systems that can be classified as providing Visual Programming or Program Visualization. These systems are organized by classifying them into three different taxonomies.}
-      \field{issn}{1045926X}
-      \field{journaltitle}{Journal of Visual Languages \& Computing}
-      \field{langid}{english}
-      \field{month}{3}
-      \field{number}{1}
-      \field{shortjournal}{Journal of Visual Languages \& Computing}
-      \field{title}{Taxonomies of Visual Programming and Program Visualization}
-      \field{urlday}{28}
-      \field{urlmonth}{4}
-      \field{urlyear}{2020}
-      \field{volume}{1}
-      \field{year}{1990}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{97\bibrangedash 123}
-      \range{pages}{27}
-      \verb{doi}
-      \verb 10.1016/S1045-926X(05)80036-9
-      \endverb
-      \verb{file}
-      \verb /Users/geoffreylitt/Zotero/storage/RRUVMERM/Myers - 1990 - Taxonomies of visual programming and program visua.pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://linkinghub.elsevier.com/retrieve/pii/S1045926X05800369
-      \endverb
-      \verb{url}
-      \verb https://linkinghub.elsevier.com/retrieve/pii/S1045926X05800369
-      \endverb
-      \keyw{program visualization}
-    \endentry
     \entry{pollock2019}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=1f8253d21abec5b893dfa0257e2bb089}{%
@@ -603,6 +526,27 @@
       \endverb
       \verb{url}
       \verb http://dl.acm.org/citation.cfm?doid=3358711.3361625
+      \endverb
+    \endentry
+    \entry{zotero-621}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A predictable state container for JavaScript apps.}
+      \field{langid}{english}
+      \field{title}{Redux - {{A}} Predictable State Container for {{JavaScript}} Apps. | {{Redux}}}
+      \field{urlday}{13}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/DIABRQN4/redux.js.org.html
+      \endverb
+      \verb{urlraw}
+      \verb https://redux.js.org/
+      \endverb
+      \verb{url}
+      \verb https://redux.js.org/
       \endverb
     \endentry
     \entry{reiss2003}{inproceedings}{}

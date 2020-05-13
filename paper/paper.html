@@ -26,83 +26,78 @@
 <h1 class="title">Abstract Program Visualization for Model-View-Update User Interfaces</h1>
 <p class="author">By <a href="https://www.geoffreylitt.com/">Geoffrey Litt</a></p>
 </header>
-<p>This is the abstract</p>
+<p>Visualizing the runtime behavior of programs can help programmers with targeted debugging and general understanding. For understanding complex programs, visualizations abstracted from the low-level code are most helpful, but this introduces new challenges: how does the programmer specify what to visualize, and how do we visualize complex data structures which aren’t just primitive values? In this work, I present an approach to visualizing the behavior of user interfaces built with the Model-View-Update pattern. I present a prototype runtime visualization system built on the Redux library and argue that, by exploiting the natural abstraction characteristics of this application architecture, we can create useful runtime visualizations with minimal programmer effort.</p>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
 <ul>
 <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
 <li><a href="#sec:related-work"><span class="toc-section-number">2</span> Related Work</a></li>
+<li><a href="#sec:design"><span class="toc-section-number">3</span> Visualization design</a></li>
+<li><a href="#sec:design"><span class="toc-section-number">4</span> Visualization Design</a></li>
 <li><a href="#bibliography">References</a></li>
 </ul>
 </nav>
 <h1 data-number="1" id="introduction" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>Lots of recent program vis work is low level. Tied directly to the source code, visualizing state at individual lines, individual variables. Makes sense for novices: small programs, need help understanding small details.</p>
-<p>OTOH: many tasks require higher level of understanding system behavior. Eg, initial explanation of a codebase. How do we make a “whiteboard drawing” live? Some challenges:</p>
+<p>Much recent work in program visualization <span class="citation" data-cites="victora guo2013 hoffswell2018a pollock2019 kasibatla2018">[<a href="#ref-guo2013" role="doc-biblioref">4</a>,<a href="#ref-hoffswell2018a" role="doc-biblioref">5</a>,<a href="#ref-kasibatla2018" role="doc-biblioref">7</a>,<a href="#ref-pollock2019" role="doc-biblioref">10</a>,<a href="#ref-victora" role="doc-biblioref">15</a>]</span> focuses on low-level details: showing the values of individual variables, connected to individual lines of source code. This makes sense for small programs, and for helping novices understand the basics of programming languages. But these visualizations don’t address the needs of more experienced programmers working with larger programs. Gaining a general understanding of a large program requires zooming out far above the source code level.</p>
+<p>This leads to the idea of <em>abstract program visualization</em>: creating abstract, program-specific views of runtime state or static code, to help someone understand the program. This idea has been explored in the context of teaching how algorithms work <span class="citation" data-cites="brown1984 stasko1990">[<a href="#ref-brown1984" role="doc-biblioref">1</a>,<a href="#ref-stasko1990" role="doc-biblioref">14</a>]</span> and in understanding the behavior of multithreaded Java programs <span class="citation" data-cites="reiss2003 reiss2005">[<a href="#ref-reiss2003" role="doc-biblioref">12</a>,<a href="#ref-reiss2005" role="doc-biblioref">13</a>]</span>. In this context, a tricky challenge emerges <span class="citation" data-cites="reiss2007">[<a href="#ref-reiss2007" role="doc-biblioref">11</a>]</span>: how can we simultaneously tailor the visualization to the specific domain, while enabling the programmer to create the visualization with minimal effort? On the one hand, overly generic visualizations (as used in low-level visualization systems like Python Tutor <span class="citation" data-cites="guo2013">[<a href="#ref-guo2013" role="doc-biblioref">4</a>]</span>) will often fail to capture the higher-level context of the specific program. On the other hand, if a visualization is too specific and takes too much work to create, it won’t be reasonably possible for programmers to create the visualization.</p>
+<p>I think a promising strategy for approaching this problem is to create runtime visualization systems coupled to a particular domain-specific framework or language. Frameworks and DSLs often impose a particular mental model, code architecture style, and other constraints that usefully narrow the space of possible programs relative to a general-purpose language. On the other hand, there are still many different programs that can be built in one framework, so the effort of building a visualization system can be amortized over thousands of programs rather than concentrated on a single one.</p>
+<p>One recent example of this strategy is visualizing runtime state in Vega <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">5</a>]</span>, a data visualization language. Because the language is so domain-specific, the runtime visualization system is able to make many contextual assumptions leading to a useful visualization.</p>
+<p>In this work, I propose a runtime program visualization system for a slightly more general category of applications: user interfaces built with the Model-View-Update (MVU) architecture <span class="citation" data-cites="fowler2020">[<a href="#ref-fowler2020" role="doc-biblioref">3</a>]</span>, also commonly known as the Elm Architecture <span class="citation" data-cites="czaplicki">[<a href="#ref-czaplicki" role="doc-biblioref">2</a>]</span>. MVU encourages the state of the interface to be centralized in a single data structure, derived by running a pure reducer function over a stream of events.</p>
+<p>This architecture has been found to have many practical benefits for program understanding and developer experience (e.g., making “time-travel debugging” relatively trivial to implement), but I think it also has useful characteristics for abstract program visualization as well. In particular, MVU naturally encourages programmers to define abstractions that represent the essence of their application: 1) a stream of semantically meaningful events, representing important changes in the application, 2) a state object that represents all the core state of the UI, organized in a hierarchical way. My hypothesis is that it’s possible to build a system that can visualize MVU interfaces with relatively little additional effort from the programmer, because of these natural characteristics of the architecture.</p>
+<p>To begin to explore this idea, I’ve prototyped a runtime visualization system on top of the popular Redux <span class="citation" data-cites="zotero-621">[<a href="#ref-zotero-621" role="doc-biblioref">16</a>]</span> Javascript library. Within the limited scope of this project, I’ve focused specifically on making a prototype specifically designed to visualize the state of the TodoMVC demo application. I’ve designed some visualization formats tailored to the state of that application, and through my own usage I’ve begun to gain a preliminary understanding what kinds of visualizations might be useful to programmers navigating the state of MVU applications over time.</p>
+<p>Much future work remains to fully flesh out this idea, including:</p>
 <ul>
-<li>relevant state isn’t necessarily individual variable values: need to select certain relevant attributes to visualize. Corollary: can’t be as automated as low level visualization.</li>
-<li>Too much work on “targeted debugging”, not enough on generalized understanding of a system. More specifically: if we don’t know what change you might want to make to a codebase, how can we maximally equip you to be ready to make an arbitrary change?
-<ul>
-<li>Naur Programming as theory building</li>
-</ul></li>
-<li>combines both static + dynamic aspects: code modules, abstracted state</li>
-<li>Lots of non-numeric data</li>
-</ul>
-<p>Abstract visualization is an interesting direction. Can be super-specific, eg algorithm animation <span class="citation" data-cites="brown1984 stasko1990">[<a href="#ref-brown1984" role="doc-biblioref">1</a>,<a href="#ref-stasko1990" role="doc-biblioref">15</a>]</span> or class and thread vis of <span class="citation" data-cites="reiss2003 reiss2005">[<a href="#ref-reiss2003" role="doc-biblioref">13</a>,<a href="#ref-reiss2005" role="doc-biblioref">14</a>]</span>.</p>
-<p>But a major challenge is making it easy enough for programmer to actually make it worth it <span class="citation" data-cites="reiss2007">[<a href="#ref-reiss2007" role="doc-biblioref">12</a>]</span></p>
-<p>This is an initial exploration. Some solution characteristics:</p>
-<ul>
-<li>redux apps <span class="citation" data-cites="czaplicki fowler2020">[<a href="#ref-czaplicki" role="doc-biblioref">2</a>,<a href="#ref-fowler2020" role="doc-biblioref">3</a>]</span>: 1) broader than Vega, narrower than general programs, 2) imposes a worldview of abstract state and simplified event stream. THIS IS THE HEART OF THE WORK
-<ul>
-<li>In this work: focus on TodoMVC specifically, but in theory should generalize to Redux programs. (Future work: how to efficiently generate a visualization like this one)</li>
-</ul></li>
-<li>“Guided tour”: introducing you to how the application works.</li>
+<li>developing a crisper understanding of the needs of programmers who are debugging MVU applications or trying to gain a general understanding of their behavior</li>
+<li>generalizing the system so that it actually works with many Redux applications instead of just one, and has a way for a programmer to create a program-specific visualization</li>
 </ul>
 <h1 data-number="2" id="sec:related-work" data-number="2"><span class="header-section-number">2</span> Related Work</h1>
+<p>Reiss <span class="citation" data-cites="reiss2007">[<a href="#ref-reiss2007" role="doc-biblioref">11</a>]</span> provides a useful taxonomy of execution visualizations, with pointers to prior research. Some particularly relevant dimensions for this work include abstract vs concrete, and effort required to create the visualization.</p>
+<p>Many systems have explored visualizing execution state at the level of individual source lines, including Learnable Programming <span class="citation" data-cites="victora">[<a href="#ref-victora" role="doc-biblioref">15</a>]</span>, Python Tutor <span class="citation" data-cites="guo2013">[<a href="#ref-guo2013" role="doc-biblioref">4</a>]</span>, Omnicode <span class="citation" data-cites="kang2017">[<a href="#ref-kang2017" role="doc-biblioref">6</a>]</span>, and Theia <span class="citation" data-cites="pollock2019">[<a href="#ref-pollock2019" role="doc-biblioref">10</a>]</span>.</p>
+<p>Some systems have explored somewhat more abstract views. Projection Boxes [<span class="citation" data-cites="lerner2020">[<a href="#ref-lerner2020" role="doc-biblioref">9</a>]</span> provides a way of selectively showing parts of application state, and Seymour <span class="citation" data-cites="kasibatla2018">[<a href="#ref-kasibatla2018" role="doc-biblioref">7</a>]</span> provides a “macro” visualization to generally show the layout of execution flow, in addition to a “micro” visualization.</p>
+<p>Other systems have explored fully abstract program visualization, entirely disconnected from the source code. For example, Balsa <span class="citation" data-cites="brown1984">[<a href="#ref-brown1984" role="doc-biblioref">1</a>]</span> and Tango <span class="citation" data-cites="stasko1990">[<a href="#ref-stasko1990" role="doc-biblioref">14</a>]</span> show animated views of algorithms operating, and Jive <span class="citation" data-cites="reiss2003">[<a href="#ref-reiss2003" role="doc-biblioref">12</a>]</span> and Jove <span class="citation" data-cites="reiss2005">[<a href="#ref-reiss2005" role="doc-biblioref">13</a>]</span> visualize various high-level projections of the execution of Java programs, e.g. when different threads are running.</p>
+<p>Hoffswell et al propose a system for visualizing runtime state inside Vega data visualizations <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">5</a>]</span>. That work fits into the category of visualizing state next to source code lines, but by integrating with a very high level domain-specific language, achieves more abstraction than visualization systems for general languages like Python. They also propose a design space for visualizations embedded in source code, which I plan to build on in this work.</p>
+<h1 data-number="3" id="sec:design" data-number="3"><span class="header-section-number">3</span> Visualization design</h1>
+<h2 data-number="3.1" id="use-cases" data-number="3.1"><span class="header-section-number">3.1</span> Use cases</h2>
+<p>I had some prior experience with the Redux Dev Tools system, which provides the ability to inspect application state in Redux applications. From this personal experience I identified two distinct use cases for a runtime visualization:</p>
 <ul>
-<li>low level program vis
-<ul>
-<li>Learnable <span class="citation" data-cites="victora">[<a href="#ref-victora" role="doc-biblioref">16</a>]</span></li>
-<li>omnicode <span class="citation" data-cites="kang2017">[<a href="#ref-kang2017" role="doc-biblioref">5</a>]</span></li>
-<li>Projection boxes <span class="citation" data-cites="lerner2020">[<a href="#ref-lerner2020" role="doc-biblioref">7</a>]</span></li>
-<li>Theia <span class="citation" data-cites="pollock2019">[<a href="#ref-pollock2019" role="doc-biblioref">11</a>]</span></li>
-<li>Theseus <span class="citation" data-cites="lieber2014">[<a href="#ref-lieber2014" role="doc-biblioref">8</a>]</span></li>
-</ul></li>
-<li>Whyline, targeted interrogation <span class="citation" data-cites="ko2004">[<a href="#ref-ko2004" role="doc-biblioref">6</a>]</span></li>
-<li>In-situ: nice taxonomy of visualizations (but still limited to Vega, narrow domain) <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">4</a>]</span></li>
-<li>Myers taxonomy <span class="citation" data-cites="myers1990">[<a href="#ref-myers1990" role="doc-biblioref">10</a>]</span></li>
-<li>Redux / Elm
-<ul>
-<li>redux dev tools Tree viewer</li>
-</ul></li>
-<li>http://cs.brown.edu/~spr/research/bloom/jvlexec.pdf</li>
-<li>Steve Reiss overview</li>
-<li>Brad Myers incense</li>
-<li>Girba’s Mondrian: a toolkit for programmers building vis <span class="citation" data-cites="meyer2006">[<a href="#ref-meyer2006" role="doc-biblioref">9</a>]</span></li>
+<li><strong>Localizing within a trace</strong>: <em>Where do I need to rewind to, in order to inspect a particularly relevant point in an execution trace?</em> This is most often helpful when debugging a particular problem. Scrubbing back and forth while watching the UI change is a manageable solution, but it’s inefficient, and sometimes the relevant state isn’t directly visible in the UI.</li>
+<li><strong>Generally understanding program behavior over time</strong>: <em>Overall, what happened as I interacted with the program?</em> Sometimes I’m not debugging a particular problem, and I’m more interested in just seeing general information about how a program is behaving over time. This is helpful when explaining the system’s behavior to a new programmer who’s preparing to work on the system, or for building up my own passive understanding of a system.</li>
 </ul>
-<h2 data-number="2.1" id="methods" data-number="2.1"><span class="header-section-number">2.1</span> Methods</h2>
-<p>Only some initial experiments.</p>
-<p>Redux dev tools monitor D3 + react</p>
-<p>Show the mockups Developed 3-4 sparkline style visualizations</p>
-<ul>
-<li>line graph</li>
-<li>Categorical graph</li>
-<li>Collection dots view?</li>
-<li>String change view?</li>
-</ul>
-<h2 data-number="2.2" id="results" data-number="2.2"><span class="header-section-number">2.2</span> Results</h2>
-<ul>
-<li>get feedback from 1-2 people?</li>
-<li>Tried using it myself</li>
-</ul>
-<h2 data-number="2.3" id="discussion" data-number="2.3"><span class="header-section-number">2.3</span> Discussion</h2>
-<h2 data-number="2.4" id="future-work" data-number="2.4"><span class="header-section-number">2.4</span> Future work</h2>
-<ul>
-<li>add vis into the body of the page</li>
-<li>guided tour</li>
-<li>screenshots?</li>
-<li>learnability</li>
-<li>dynamic queries</li>
-</ul>
+<p>These two goals partially overlap, but can also lead in different design directions. For example, localizing a specific point in a trace can benefit from a more active interrogatory approach (e.g. as explored in the Whyline system <span class="citation" data-cites="ko2004">[<a href="#ref-ko2004" role="doc-biblioref">8</a>]</span>), but general program understanding might benefit from a more passive interaction style.</p>
+<h2 data-number="3.2" id="data-structures" data-number="3.2"><span class="header-section-number">3.2</span> Data structures</h2>
+<p>Many concrete and low-level program visualizations focus on showing primitive values, especially numeric values. However, the state of an arbitrary MVU application often contains complex nested data structures, which contain many non-numeric values: booleans, strings, and enum values. One challenge for this system is to find ways to visualize these types of structures.</p>
+<h1 data-number="4" id="sec:design" data-number="4"><span class="header-section-number">4</span> Visualization Design</h1>
+<h2 data-number="4.1" id="context-todomvc" data-number="4.1"><span class="header-section-number">4.1</span> Context: TodoMVC</h2>
+<p>In order to focus my effort on concretely understanding the utility of visualizations, rather than building out infrastructure, I built a visualization system for a specific application: the Redux implementation of the TodoMVC GUI benchmark. TodoMVC is a basic todo list UI where you can add, edit, delete, and complete todos. You can filter the list of todos shown to either active or completed ones.</p>
+<p>In Redux, the implementation stores an app state object as shown in Figure 1. There are Redux actions corresponding to each of the main actions listed above, e.g. “add todo” and “set visibility filter”. Importantly, the Redux events capture an abstract, semantically meaningful picture of the user’s interactions: when adding a new todo, the user’s keystrokes are collected in the local state of a React component, and only a single “add todo” event is triggered in Redux once the user finally adds the new todo.</p>
+<figure>
+<img src="images/todomvc-state.png" id="fig:todomvc-state" width="175" height="200" alt="" /><figcaption>Figure 1: TodoMVC Redux application state</figcaption>
+</figure>
+<h2 data-number="4.2" id="overall-layout" data-number="4.2"><span class="header-section-number">4.2</span> Overall layout</h2>
+<figure>
+<img src="images/mockup.png" id="fig:mockup" width="330" height="216" alt="" /><figcaption>Figure 2: JSON tree with inline sparklines</figcaption>
+</figure>
+<p>My initial idea, as shown in Figure 2, was to show the current state of the application as a nested JSON tree, and then to show small sparkline-style visualizations next to nodes of the tree. This design draws some inspiration from <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">5</a>]</span>, but differs in that it uses visualization to annotate the application’s state tree, rather than its source code. The advantage of this design is that it closely and directly links the current state to data from the execution history, but that link also causes thorny problems—for example, how do you deal with nodes that have disappeared from the current state? Perhaps more concerningly, by tying the visualization to the <em>concrete</em> current state, it limits the ability of the programmer to create a customized abstract view. Linking the visualization to the Redux state is a much more abstract view than linking to lines of source code, but it still presents a limitation.</p>
+<p>As a result, in my next iteration I switched to a different layout, shown in Figure 3: a vertically stacked list of small visualizations of state over time. Each visualization can display an arbitrary projection of the app’s Redux state. Because the graphs are horizontally aligned, it’s easy to see how different aspects of the app’s state have changed in relation to each other. While I haven’t implemented this yet, I imagine that programmers would be able to dynamically add visualizations to this list, specifying useful projections of app state, and deciding what type of visualization to use for each projection.</p>
+<figure>
+<img src="images/timeline.png" id="fig:timeline" width="330" height="200" alt="" /><figcaption>Figure 3: Timeline view of stacked visualizations</figcaption>
+</figure>
+<p>One thing lost in the timeline view is the concrete view of the app’s entire state. It’s still useful to see this, so I added a separate panel which displays that data. The user can scrub through history in the timeline, “pin” the app at a particular point in time, and then use the separate state view to drill into the app’s concrete state at that point.</p>
+<h2 data-number="4.3" id="visualization-types" data-number="4.3"><span class="header-section-number">4.3</span> Visualization Types</h2>
+<p>Here are the specific types of visualizations I prototyped (all shown in Figure 3):</p>
+<p><em>Action list</em>: I found that skimming a list of actions represented as text (“ADD_TODO”, “EDIT_TODO”) required a lot of conscious reading effort. Instead, by choosing a colorful symbol for each action in the app, we can take advantage of pre-attentive processing to more quickly understand what actions have occurred in the execution trace. In this case I chose symbols for all the actions in TodoMVC; more generally, a programmer could specify a meaningful symbol for every action in their application. In some cases it might be difficult to choose meaningful and different symbols for all actions; falling back to random symbols or colored dots could work as well. In using this tool I’ve found that the symbolic action list makes it far easier to find a point in an execution trace that I’m looking for.</p>
+<p><em>Line graph</em>: This is simply a line graph of some numeric quantity over time. In this context I’ve used it to visualize quantities like “Number of todos visible”. Choosing a y-axis is quite tricky because the full range of values can’t be known in advance. In trying out different options and using the tool myself, I decided that viewing relative changes over time was most important—generally I’m looking for things like “when did the number of todos go down?”. Therefore, I let each graph scale to the current range of values and don’t even show a y-axis label—I’m not aiming to precisely read numeric values off the graph.</p>
+<p><em>Enum graph</em>: User interfaces commonly have enums / union types, which can take on a small number of predefined values. To represent enum values changing over time, I chose to use both a color and position encoding, as a way of redundantly encoding the information and .</p>
+<p>With more time, I’d like to explore many other types of visualizations in addition to these. One particular interest is displaying the entire state of a collection of objects in a single graph.</p>
+<h2 data-number="4.4" id="prototype-implementation" data-number="4.4"><span class="header-section-number">4.4</span> Prototype Implementation</h2>
+<p>I implemented a working prototype version of this visualization system. I built a plugin on top of the existing Redux Dev Tools, which provides substantial infrastructure for inspecting and manipulating the state of a Redux application.</p>
+<p>I used the React and Redux frameworks to implement the main skeleton of my system. The graphs are built in a combination of d3 and React—using d3 for computing scales and positions, and React for SVG rendering.</p>
+<h2 data-number="4.5" id="sec:discussion" data-number="4.5"><span class="header-section-number">4.5</span> Discussion and Future Work</h2>
+<p>This work is still an early prototype and there are many opportunities for future work.</p>
+<p>Using this system myself, I found that I was able to more quickly get an overall sense of what happened in an execution trace by looking at these visualizations than looking at the existing Redux Dev Tools display. However, I want to gain a clearer understanding of what questions people have when learning about the behavior of a UI, in order to evaluate the usefulness of the system. In particular, I’m curious about general “program understanding” as opposed to targeted debugging. Could this visualization be a useful aid when onboarding someone into a codebase and teaching them how it works?</p>
+<p>There’s lots of future work to refine the core visualizations further. I haven’t yet explored visualizing a complex object in a single graph, or showing strings changing over time. I’d also like to more clearly incorporate Hoffswell et al’s taxonomy <span class="citation" data-cites="hoffswell2018a">[<a href="#ref-hoffswell2018a" role="doc-biblioref">5</a>]</span> into this work, evaluating these visualizations in those terms and explicitly extending that taxonomy.</p>
+<p>Another area of work is generalizing this system to work with any Redux application. I’d like to explore the programmer experience of creating these visualizations for an existing complex application. How much of that process can be automated? How can we make it easy for the programmer to decide which visualizations would be helpful, and then to actually specify those visualizations? As an initial idea, I imagine that the programmer could specify an arbitrary expression over the Redux state,choose from a predefined list of visualizations for showing the output of that expression, and then add that to the timeline panel in this tool.</p>
+<p>Program visualization offers a rich set of possibilities for helping people understand their code better. In this work, I’ve provided an initial prototype of a system for visualizing the runtime state of Model-View-Update user interfaces, exploiting the natural architecture of these applications to show an abstract picture of code execution over time.</p>
 <h1 class="unnumbered" data-number="" id="bibliography" class="unnumbered" data-number="">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-brown1984">
@@ -114,44 +109,44 @@
 <div id="ref-fowler2020">
 <p>3. Simon Fowler. 2020. Model-View-Update-Communicate: Session Types meet the Elm Architecture. Retrieved May 11, 2020 from <a href="http://arxiv.org/abs/1910.11108">http://arxiv.org/abs/1910.11108</a></p>
 </div>
+<div id="ref-guo2013">
+<p>4. Philip J. Guo. 2013. Online python tutor: Embeddable web-based program visualization for cs education. In <em>Proceeding of the 44th ACM technical symposium on Computer science education</em> (SIGCSE ’13), 579–584. <a href="https://doi.org/10.1145/2445196.2445368">https://doi.org/10.1145/2445196.2445368</a></p>
+</div>
 <div id="ref-hoffswell2018a">
-<p>4. Jane Hoffswell, Arvind Satyanarayan, and Jeffrey Heer. 2018. Augmenting Code with In Situ Visualizations to Aid Program Understanding. In <em>Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems</em> (CHI ’18), 1–12. <a href="https://doi.org/10.1145/3173574.3174106">https://doi.org/10.1145/3173574.3174106</a></p>
+<p>5. Jane Hoffswell, Arvind Satyanarayan, and Jeffrey Heer. 2018. Augmenting Code with In Situ Visualizations to Aid Program Understanding. In <em>Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems</em> (CHI ’18), 1–12. <a href="https://doi.org/10.1145/3173574.3174106">https://doi.org/10.1145/3173574.3174106</a></p>
 </div>
 <div id="ref-kang2017">
-<p>5. Hyeonsu Kang and Philip J. Guo. 2017. Omnicode: A Novice-Oriented Live Programming Environment with Always-On Run-Time Value Visualizations. In <em>Proceedings of the 30th Annual ACM Symposium on User Interface Software and Technology</em>, 737–745. <a href="https://doi.org/10.1145/3126594.3126632">https://doi.org/10.1145/3126594.3126632</a></p>
+<p>6. Hyeonsu Kang and Philip J. Guo. 2017. Omnicode: A Novice-Oriented Live Programming Environment with Always-On Run-Time Value Visualizations. In <em>Proceedings of the 30th Annual ACM Symposium on User Interface Software and Technology</em>, 737–745. <a href="https://doi.org/10.1145/3126594.3126632">https://doi.org/10.1145/3126594.3126632</a></p>
+</div>
+<div id="ref-kasibatla2018">
+<p>7. Saketh Ram Kasibatla. 2018. Seymour: A Live Programming Environment for the Classroom. UCLA. Retrieved May 13, 2020 from <a href="https://escholarship.org/uc/item/8gx5x6kj">https://escholarship.org/uc/item/8gx5x6kj</a></p>
 </div>
 <div id="ref-ko2004">
-<p>6. Andrew J. Ko and Brad A. Myers. 2004. Designing the whyline: A debugging interface for asking questions about program behavior. In <em>Proceedings of the 2004 conference on Human factors in computing systems - CHI ’04</em>, 151–158. <a href="https://doi.org/10.1145/985692.985712">https://doi.org/10.1145/985692.985712</a></p>
+<p>8. Andrew J. Ko and Brad A. Myers. 2004. Designing the whyline: A debugging interface for asking questions about program behavior. In <em>Proceedings of the 2004 conference on Human factors in computing systems - CHI ’04</em>, 151–158. <a href="https://doi.org/10.1145/985692.985712">https://doi.org/10.1145/985692.985712</a></p>
 </div>
 <div id="ref-lerner2020">
-<p>7. Sorin Lerner. 2020. Projection Boxes: On-the-fly Reconfigurable Visualization for Live Programming. In <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</em>. <a href="https://doi.org/10.1145/3313831.3376494">https://doi.org/10.1145/3313831.3376494</a></p>
-</div>
-<div id="ref-lieber2014">
-<p>8. Tom Lieber, Joel R. Brandt, and Rob C. Miller. 2014. Addressing misconceptions about code with always-on programming visualizations. In <em>Proceedings of the 32nd annual ACM conference on Human factors in computing systems - CHI ’14</em>, 2481–2490. <a href="https://doi.org/10.1145/2556288.2557409">https://doi.org/10.1145/2556288.2557409</a></p>
-</div>
-<div id="ref-meyer2006">
-<p>9. Michael Meyer, Tudor Gîrba, and Mircea Lungu. 2006. Mondrian: An agile information visualization framework. In <em>Proceedings of the 2006 ACM symposium on Software visualization - SoftVis ’06</em>, 135. <a href="https://doi.org/10.1145/1148493.1148513">https://doi.org/10.1145/1148493.1148513</a></p>
-</div>
-<div id="ref-myers1990">
-<p>10. Brad A. Myers. 1990. Taxonomies of visual programming and program visualization. <em>Journal of Visual Languages &amp; Computing</em> 1, 1: 97–123. <a href="https://doi.org/10.1016/S1045-926X(05)80036-9">https://doi.org/10.1016/S1045-926X(05)80036-9</a></p>
+<p>9. Sorin Lerner. 2020. Projection Boxes: On-the-fly Reconfigurable Visualization for Live Programming. In <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</em>. <a href="https://doi.org/10.1145/3313831.3376494">https://doi.org/10.1145/3313831.3376494</a></p>
 </div>
 <div id="ref-pollock2019">
-<p>11. Josh Pollock, Jared Roesch, Doug Woos, and Zachary Tatlock. 2019. Theia: Automatically generating correct program state visualizations. In <em>Proceedings of the 2019 ACM SIGPLAN Symposium on SPLASH-E - SPLASH-E 2019</em>, 46–56. <a href="https://doi.org/10.1145/3358711.3361625">https://doi.org/10.1145/3358711.3361625</a></p>
+<p>10. Josh Pollock, Jared Roesch, Doug Woos, and Zachary Tatlock. 2019. Theia: Automatically generating correct program state visualizations. In <em>Proceedings of the 2019 ACM SIGPLAN Symposium on SPLASH-E - SPLASH-E 2019</em>, 46–56. <a href="https://doi.org/10.1145/3358711.3361625">https://doi.org/10.1145/3358711.3361625</a></p>
 </div>
 <div id="ref-reiss2007">
-<p>12. Steven P. Reiss. 2007. Visual representations of executing programs. <em>J. Vis. Lang. Comput.</em> <a href="https://doi.org/10.1016/j.jvlc.2007.01.003">https://doi.org/10.1016/j.jvlc.2007.01.003</a></p>
+<p>11. Steven P. Reiss. 2007. Visual representations of executing programs. <em>J. Vis. Lang. Comput.</em> <a href="https://doi.org/10.1016/j.jvlc.2007.01.003">https://doi.org/10.1016/j.jvlc.2007.01.003</a></p>
 </div>
 <div id="ref-reiss2003">
-<p>13. Steven P. Reiss. 2003. JIVE: Visualizing Java in action demonstration description. In <em>Proceedings of the 25th International Conference on Software Engineering</em> (ICSE ’03), 820–821.</p>
+<p>12. Steven P. Reiss. 2003. JIVE: Visualizing Java in action demonstration description. In <em>Proceedings of the 25th International Conference on Software Engineering</em> (ICSE ’03), 820–821.</p>
 </div>
 <div id="ref-reiss2005">
-<p>14. Steven P. Reiss and Manos Renieris. 2005. Jove: Java as it happens. In <em>Proceedings of the 2005 ACM symposium on Software visualization - SoftVis ’05</em>, 115. <a href="https://doi.org/10.1145/1056018.1056034">https://doi.org/10.1145/1056018.1056034</a></p>
+<p>13. Steven P. Reiss and Manos Renieris. 2005. Jove: Java as it happens. In <em>Proceedings of the 2005 ACM symposium on Software visualization - SoftVis ’05</em>, 115. <a href="https://doi.org/10.1145/1056018.1056034">https://doi.org/10.1145/1056018.1056034</a></p>
 </div>
 <div id="ref-stasko1990">
-<p>15. John T. Stasko. 1990. Tango: A Framework and System for Algorithm Animation. <em>Computer</em> 23, 9: 27–39. <a href="https://doi.org/10.1109/2.58216">https://doi.org/10.1109/2.58216</a></p>
+<p>14. John T. Stasko. 1990. Tango: A Framework and System for Algorithm Animation. <em>Computer</em> 23, 9: 27–39. <a href="https://doi.org/10.1109/2.58216">https://doi.org/10.1109/2.58216</a></p>
 </div>
 <div id="ref-victora">
-<p>16. Bret Victor. Learnable Programming. Retrieved April 28, 2020 from <a href="http://worrydream.com/LearnableProgramming/">http://worrydream.com/LearnableProgramming/</a></p>
+<p>15. Bret Victor. Learnable Programming. Retrieved April 28, 2020 from <a href="http://worrydream.com/LearnableProgramming/">http://worrydream.com/LearnableProgramming/</a></p>
+</div>
+<div id="ref-zotero-621">
+<p>16. Redux - A predictable state container for JavaScript apps. | Redux. Retrieved May 13, 2020 from <a href="https://redux.js.org/">https://redux.js.org/</a></p>
 </div>
 </div>
 
