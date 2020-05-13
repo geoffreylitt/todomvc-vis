@@ -6,9 +6,11 @@ import uniq from 'lodash/uniq'
 import Line from './Line'
 import GraphContainer from './GraphContainer'
 
-const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
+const color = d3.scaleOrdinal()
+              .domain([])
+              .range(d3.schemePastel1)
 
-  const paddingRight = 50;
+const CollectionGraph = ({ data, width, height, setSelectedStateId, selectedStateId, jumpToState, currentStateId, resetToSelectedState }) => {
 
   const xScale = d3.scaleBand()
                  .domain(data.map(d => d.stateId))
@@ -16,13 +18,9 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
                  .padding(0.1);
 
   const yScale = d3.scaleBand()
-                .domain(data[0]["enumValues"])
+                .domain([])
                 .range([height - 1, 1])
                 .padding(0.1);
-
-  const color = d3.scaleOrdinal()
-                .domain(uniq(data.map(d => d.value)))
-                .range(d3.schemePastel1)
 
   const xPosToValue = (xPos) => {
     const index = Math.round((xPos / xScale.step()));
@@ -37,7 +35,7 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
   }
 
   const currentStateMarker = d3.line().curve(d3.curveLinear)([
-      [xScale(currentStateId), yScale.range()[0]],
+      [xScale(currentStateId), height - 1],
       [xScale(currentStateId), yScale.range()[1]],
     ])
 
@@ -45,6 +43,7 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
       [xScale(selectedStateId), yScale.range()[0]],
       [xScale(selectedStateId), yScale.range()[1]],
     ])
+
 
   const bisect = d3.bisector(d => d.stateId).right;
 
@@ -71,15 +70,19 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
     resetToSelectedState();
   }
 
-  const rects = data.map(d => {
-    return <rect
-      key={d.stateId}
-      fill={color(d.value)}
-      x={xScale(d.stateId)}
-      y={yScale(d.value)}
-      height={yScale.bandwidth()}
-      width={xScale.bandwidth()}>
-    </rect>
+  const dots = data.flatMap(d => {
+    return d.value.map((todo, index) => {
+      const column = Math.floor(index / 5);
+      const row = index % 5;
+      return <circle
+        key={`${d.stateId}:${todo.id}`}
+        fill={color(todo.id)}
+        stroke="#999"
+        cx={xScale(d.stateId) + (column * 5)}
+        cy={4 + (row * 7) + (column * 4)}
+        r={4}
+       />
+    })
   })
 
 
@@ -98,13 +101,13 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
           width={50}
           fill="#333"
           fontSize="12px">
-          {currentValue}
+          {currentValue.length} todos
         </text>
   }
 
   return <>
     <GraphContainer width={width} height={height} onMouseMove={onMouseMove} onClick={onClick} onMouseLeave={onMouseLeave}>
-      { rects }
+      { dots }
       <Line path={currentStateMarker} stroke='#aaa' strokeDasharray={3} strokeWidth={1} />
       { selectedStateId ? <Line path={selectedStateMarker} stroke='#ffcece' /> : null }
       {valueOverlay}
@@ -113,5 +116,5 @@ const CategoryGraph = ({ data, width, height, setSelectedStateId, selectedStateI
 }
 
 
-export default CategoryGraph;
+export default CollectionGraph;
 

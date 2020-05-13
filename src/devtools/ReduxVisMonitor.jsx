@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import LineGraph from './LineGraph'
 import ActionsGraph from './ActionsGraph'
 import CategoryGraph from './CategoryGraph'
+import CollectionGraph from './CollectionGraph'
 import mapValues from 'lodash/mapValues'
 import { getVisibleTodos, getCompletedTodoCount } from '../selectors'
 import JSONTree from 'react-json-tree'
@@ -120,6 +121,11 @@ export default class VisMonitor extends (PureComponent || Component) {
       value: getCompletedTodoCount(state.state)
     }))
 
+    const todos = computedStates.map((state, index) => ({
+      stateId: index,
+      value: state.state.todos
+    }))
+
     const visibilityFilter = computedStates.map((state, index) => ({
       stateId: index,
       value: state.state.visibilityFilter,
@@ -164,19 +170,23 @@ export default class VisMonitor extends (PureComponent || Component) {
         <Instructions>
           <h3 style={{marginTop: 0}}>MVU Visualizer</h3>
 
-          <p>Geoffrey Litt, 6.894 Final Project</p>
+          <p>Geoffrey Litt<br />6.894 Final Project</p>
 
           <p>
-            <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/">project background / description</a>
+            <a href="https://github.mit.edu/6894-sp20/FP-Program-Execution-Visualization/">project background</a>
           </p>
 
          <p>
-           Try it out: 1) do some things in the app, 2) hover on graphs below to navigate past states, 3) click in a graph to rewind the app state to a past version.
+           Try it out! Interact with the todos app, hover over the timeline to rewind, click on timeline to pin a past state
          </p>
 
         </Instructions>
 
         <Visualizations>
+{/*          todo: all the graph components share a ton of
+          functionality; clearly need to DRY/generalize
+          across them.*/}
+
           <PanelColumnLabel>Timeline</PanelColumnLabel>
 
             <div>
@@ -190,8 +200,7 @@ export default class VisMonitor extends (PureComponent || Component) {
                 setSelectedStateId={setSelectedStateId}
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
-                resetToSelectedState={resetToSelectedState}
-                paddingRight={paddingRight} />
+                resetToSelectedState={resetToSelectedState} />
             </div>
 
             <div>
@@ -207,7 +216,6 @@ export default class VisMonitor extends (PureComponent || Component) {
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
-                paddingRight={paddingRight}
                 />
             </div>
 
@@ -224,7 +232,6 @@ export default class VisMonitor extends (PureComponent || Component) {
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
-                paddingRight={paddingRight}
                 />
             </div>
 
@@ -232,8 +239,8 @@ export default class VisMonitor extends (PureComponent || Component) {
               <GraphLabel># completed</GraphLabel>
 
               {/* todo: could dynamically define the state -> value function? */}
-              <LineGraph
-                data={completedTodosCount}
+              <CollectionGraph
+                data={todos}
                 currentStateId={currentStateIndex}
                 width={graphWidth}
                 height={graphHeight}
@@ -241,7 +248,6 @@ export default class VisMonitor extends (PureComponent || Component) {
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
-                paddingRight={paddingRight}
                 />
             </div>
 
@@ -258,7 +264,6 @@ export default class VisMonitor extends (PureComponent || Component) {
                 selectedStateId={this.state.selectedStateId}
                 jumpToState={(stateId) => dispatch(jumpToState(stateId))}
                 resetToSelectedState={resetToSelectedState}
-                paddingRight={paddingRight}
                 />
             </div>
           </Visualizations>

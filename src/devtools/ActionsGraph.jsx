@@ -110,7 +110,7 @@ const ActionsGraph = ({ data, width, height, setSelectedStateId, jumpToState, cu
       y={12}
       height={10}
       width={50}
-      fill="#999"
+      fill="#333"
       fontSize="12px">
       {currentValue}
     </text>

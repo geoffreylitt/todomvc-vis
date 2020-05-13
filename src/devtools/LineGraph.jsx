@@ -84,7 +84,7 @@ const LineGraph = ({ data, width, height, setSelectedStateId, selectedStateId, j
           y={12}
           height={10}
           width={50}
-          fill="#999"
+          fill="#333"
           fontSize="12px">
           {currentValue}
         </text>
