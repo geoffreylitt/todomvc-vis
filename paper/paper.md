@@ -40,7 +40,7 @@ Much future work remains to fully flesh out this idea, including:
 
 Reiss [@reiss2007] provides a useful taxonomy of execution visualizations, with pointers to prior research. Some particularly relevant dimensions for this work include abstract vs concrete, and effort required to create the visualization.
 
-Many systems have explored visualizing execution state at the level of individual source lines, including Learnable Programming [@victora], Python Tutor [@guo2013], Omnicode [@kang2017], and Theia [@pollock2019].
+Many systems have explored visualizing execution state at the level of individual source lines, including Learnable Programming [@victora], Python Tutor [@guo2013], Omnicode [@kang2017], Theia [@pollock2019], and Theseus [@lieber2014].
 
 Some systems have explored somewhat more abstract views. Projection Boxes [@lerner2020 provides a way of selectively showing parts of application state, and Seymour [@kasibatla2018] provides a "macro" visualization to generally show the layout of execution flow, in addition to a "micro" visualization.
 

@@ -461,6 +461,67 @@
       \verb 10.1145/3313831.3376494
       \endverb
     \endentry
+    \entry{lieber2014}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=466a9bc23fe3d89a153e4b1c656c6910}{%
+           family={Lieber},
+           familyi={L\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4e37d0527816c22a15c0f4a05126a3e3}{%
+           family={Brandt},
+           familyi={B\bibinitperiod},
+           given={Joel\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=121343d23d64b3354929983e3e446ef3}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Rob\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Toronto, Ontario, Canada}%
+      }
+      \list{publisher}{1}{%
+        {ACM Press}%
+      }
+      \strng{namehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{fullhash}{72ef183ee88099bf873395d1a562269f}
+      \strng{bibnamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authorbibnamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authornamehash}{72ef183ee88099bf873395d1a562269f}
+      \strng{authorfullhash}{72ef183ee88099bf873395d1a562269f}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present Theseus, an IDE extension that visualizes run­ time behavior within a JavaScript code editor. By displaying real-time information about how code actually behaves dur­ ing execution, Theseus proactively addresses misconceptions by drawing attention to similarities and differences between the programmer’s idea of what code does and what it actu­ ally does. To understand how programmers would respond to this kind of an always-on visualization, we ran a lab study with graduate students, and interviewed 9 professional pro­ grammers who were asked to use Theseus in their day-to-day work. We found that users quickly adopted strategies that are unique to always-on, real-time visualizations, and used the additional information to guide their navigation through their code.}
+      \field{booktitle}{Proceedings of the 32nd Annual {{ACM}} Conference on {{Human}} Factors in Computing Systems - {{CHI}} '14}
+      \field{eventtitle}{The 32nd Annual {{ACM}} Conference}
+      \field{isbn}{978-1-4503-2473-1}
+      \field{langid}{english}
+      \field{title}{Addressing Misconceptions about Code with Always-on Programming Visualizations}
+      \field{urlday}{11}
+      \field{urlmonth}{5}
+      \field{urlyear}{2020}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{2481\bibrangedash 2490}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2556288.2557409
+      \endverb
+      \verb{file}
+      \verb /Users/geoffreylitt/Zotero/storage/44LDG267/Lieber et al. - 2014 - Addressing misconceptions about code with always-o.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
+      \endverb
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?doid=2556288.2557409
+      \endverb
+    \endentry
     \entry{pollock2019}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=1f8253d21abec5b893dfa0257e2bb089}{%
