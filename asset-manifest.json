@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/main.a3bd9b7e.chunk.js",
-    "main.js.map": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/main.a3bd9b7e.chunk.js.map",
-    "runtime~main.js": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/runtime~main.6c763217.js",
-    "runtime~main.js.map": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/runtime~main.6c763217.js.map",
-    "static/css/2.8dd801da.chunk.css": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/css/2.8dd801da.chunk.css",
-    "static/js/2.e4d82d3e.chunk.js": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/2.e4d82d3e.chunk.js",
-    "static/js/2.e4d82d3e.chunk.js.map": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/js/2.e4d82d3e.chunk.js.map",
-    "index.html": "/pages/6894-sp20/FP-Program-Execution-Visualization/index.html",
-    "precache-manifest.eb7e28d0986a75edfc64e57ba7c41201.js": "/pages/6894-sp20/FP-Program-Execution-Visualization/precache-manifest.eb7e28d0986a75edfc64e57ba7c41201.js",
-    "service-worker.js": "/pages/6894-sp20/FP-Program-Execution-Visualization/service-worker.js",
-    "static/css/2.8dd801da.chunk.css.map": "/pages/6894-sp20/FP-Program-Execution-Visualization/static/css/2.8dd801da.chunk.css.map"
+    "main.js": "/todomvc-vis/static/js/main.a3bd9b7e.chunk.js",
+    "main.js.map": "/todomvc-vis/static/js/main.a3bd9b7e.chunk.js.map",
+    "runtime~main.js": "/todomvc-vis/static/js/runtime~main.56927631.js",
+    "runtime~main.js.map": "/todomvc-vis/static/js/runtime~main.56927631.js.map",
+    "static/css/2.8dd801da.chunk.css": "/todomvc-vis/static/css/2.8dd801da.chunk.css",
+    "static/js/2.cc4b3b9f.chunk.js": "/todomvc-vis/static/js/2.cc4b3b9f.chunk.js",
+    "static/js/2.cc4b3b9f.chunk.js.map": "/todomvc-vis/static/js/2.cc4b3b9f.chunk.js.map",
+    "index.html": "/todomvc-vis/index.html",
+    "precache-manifest.4e6ee918701f9c2b4ca34fe9fd6311e1.js": "/todomvc-vis/precache-manifest.4e6ee918701f9c2b4ca34fe9fd6311e1.js",
+    "service-worker.js": "/todomvc-vis/service-worker.js",
+    "static/css/2.8dd801da.chunk.css.map": "/todomvc-vis/static/css/2.8dd801da.chunk.css.map"
   }
 }
