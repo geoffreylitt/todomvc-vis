@@ -4,7 +4,7 @@ By Geoffrey Litt, glitt@mit.edu
 
 * [📹 Video demo](https://www.loom.com/share/e5df0b7ba47240e3ac9f5ceb9316ec53)
 * [📄 Final Paper](paper/paper.pdf)
-* [⏯ Live Prototype](https://github.mit.edu/pages/6894-sp20/FP-Program-Execution-Visualization/)
+* [⏯ Live Prototype](https://geoffreylitt.github.io/todomvc-vis/)
 
 Visualizing the runtime behavior of programs can help programmers with targeted debugging and general understanding. For understanding complex programs, visualizations abstracted from the low-level code are most helpful, but this introduces new challenges: how does the programmer specify what to visualize, and how do we visualize complex data structures which aren't just primitive values?
 
@@ -20,9 +20,15 @@ To run locally:
 npm run start
 ```
 
-To deploy to Github pages:
+To deploy to Github pages (public Github):
 
 ```
 npm run deploy
+```
+
+To deploy to MIT Github: Change the "homepage" field in package.json to point to MIT github, then
+
+```
+gh-pages -d build --remote origin
 ```
 

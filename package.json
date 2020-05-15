@@ -2,7 +2,7 @@
   "name": "redux-todomvc-visualization",
   "version": "0.0.1",
   "author": "Geoffrey Litt <glitt@mit.edu>",
-  "homepage": "https://github.mit.edu/pages/6894-sp20/FP-Program-Execution-Visualization/",
+  "homepage": "https://geoffreylitt.github.io/todomvc-vis/",
   "private": true,
   "devDependencies": {
     "react-scripts": "^3.0.0",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build && gh-pages -d build --remote public",
+    "deploy": "gh-pages -d build --remote public",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
